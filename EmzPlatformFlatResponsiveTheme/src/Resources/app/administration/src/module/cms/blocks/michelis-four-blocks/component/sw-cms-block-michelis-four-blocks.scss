@@ -1,0 +1,23 @@
+.sw-cms-block-michelis-four-blocks {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  flex-direction: column;
+
+  .sw-cms-block-michelis-four-blocks-slot-feeds {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    justify-content: space-evenly;
+    width: 100%;
+
+    .sw-cms-block-michelis-four-blocks-slot-feed {
+      position: relative;
+      display: block;
+      padding: 5px;
+      max-width: 25%;
+      overflow: hidden;
+    }
+  }
+}

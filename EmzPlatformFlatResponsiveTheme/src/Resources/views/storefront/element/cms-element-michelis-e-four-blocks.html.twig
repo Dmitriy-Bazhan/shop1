@@ -1,0 +1,12 @@
+{% block cms_element_michelis_e_four_blocks %}
+    {% set translatedConfig = element.translated.config %}
+    {% set url = translatedConfig.url.value ?? 'javascript:void(0)' %}
+
+    <div class="m-fourblock-top">
+        <div class="m-four-block-img">
+            <a href="{{ url }}" {% if translatedConfig.newTab.value %}target="_blank"{% endif %}>
+                <img src="{% if element.picture %}{{ element.picture.url }}{% endif %}" />
+            </a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% block michelis_e_img_text_block_config %}
+    <div class="michelis-e-img-text-block-config">
+
+        {% block michelis_e_img_text_block_config_title %}
+            <div class="michelis-e-img-text-block-config__title">
+                <sw-field v-model="element.config.title.value"
+                          class="michelis-e-img-text-block-config__title-block"
+                          type="text"
+                          :label="$tc('michelis.cms.elements.michelis-e-img-text-block.labels.title')"
+                          :placeholder="$tc('michelis.cms.elements.michelis-e-img-text-block.placeholders.title')">
+                </sw-field>
+            </div>
+        {% endblock %}
+
+        {% block michelis_e_img_text_block_config_description %}
+            <div class="michelis-e-img-text-block-config__description">
+                <sw-field v-model="element.config.description.value"
+                          class="michelis-e-img-text-block-config__description-block"
+                          type="text"
+                          :label="$tc('michelis.cms.elements.michelis-e-img-text-block.labels.description')"
+                          :placeholder="$tc('michelis.cms.elements.michelis-e-img-text-block.placeholders.description')">
+                </sw-field>
+            </div>
+        {% endblock %}
+
+        {% block michelis_e_img_text_block_config_cost_first %}
+            <div class="michelis-e-img-text-block-config__costFirst">
+                <sw-field v-model="element.config.costFirst.value"
+                          class="michelis-e-img-text-block-config__cost-first-block"
+                          type="text"
+                          :label="$tc('michelis.cms.elements.michelis-e-img-text-block.labels.costFirst')"
+                          :placeholder="$tc('michelis.cms.elements.michelis-e-img-text-block.placeholders.costFirst')">
+                </sw-field>
+            </div>
+        {% endblock %}
+
+        {% block michelis_e_img_text_block_config_cost_second %}
+            <div class="michelis-e-img-text-block-config__costSecond">
+                <sw-field v-model="element.config.costSecond.value"
+                          class="michelis-e-img-text-block-config__cost-second-block"
+                          type="text"
+                          :label="$tc('michelis.cms.elements.michelis-e-img-text-block.labels.costSecond')"
+                          :placeholder="$tc('michelis.cms.elements.michelis-e-img-text-block.placeholders.costSecond')">
+                </sw-field>
+            </div>
+        {% endblock %}
+
+        {% block michelis_e_img_text_block_config_background_modal %}
+            <sw-media-modal-v2
+                    variant="regular"
+                    v-if="mediaModalIsOpen"
+                    :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                    :entityContext="cmsPageState.entityName"
+                    :allowMultiSelect="false"
+                    :initialFolderId="cmsPageState.defaultMediaFolderId"
+                    @media-upload-remove-image="onImageRemove"
+                    @media-modal-selection-change="onSelectionChanges"
+                    @modal-close="onCloseModal">
+            </sw-media-modal-v2>
+        {% endblock %}
+    </div>
+{% endblock %}

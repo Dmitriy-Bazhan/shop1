@@ -1,0 +1,77 @@
+{% block cms_element_michelis_e_top_categories_up %}
+    {% set translatedConfig = element.translated.config %}
+    {% set url = translatedConfig.url.value ?? 'javascript:void(0)' %}
+
+    <div class="michelis-item--inner">
+
+        <div class="michelis-item--text">
+
+            <div class="michelis-item--pic" {% if element.picture %}style="background-image: url('{{ element.picture.url }}')"{% endif %}>
+
+                <div class="michelis-first-block">
+                    <div class="michelis-item--title">
+                        {% if translatedConfig.title.value %}
+                            {{ translatedConfig.title.value }}
+                        {% endif %}
+                    </div>
+
+                    <div class="michelis-item--description">
+                        {% if translatedConfig.description.value %}
+                            {{ translatedConfig.description.value }}
+                        {% endif %}
+                    </div>
+
+                    <div class="michelis-item--button">
+                <span>
+                    <a href="{{ url }}" {% if translatedConfig.newTab.value %}target="_blank"{% endif %}>{{ translatedConfig.btnLabel.value }}</a>
+                </span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="m-owner">
+            <div class="michelis-second-block">
+                <div class="michelis-item--titleSecond">
+                    {% if translatedConfig.titleSecond.value %}
+                        {{ translatedConfig.titleSecond.value }}
+                    {% endif %}
+                </div>
+
+                <div class="michelis-item--descriptionSecond">
+                    {% if translatedConfig.descriptionSecond.value %}
+                        {{ translatedConfig.descriptionSecond.value }}
+                    {% endif %}
+                </div>
+
+                <div class="michelis-item--buttonSecond">
+                <span>
+                    <a href="{{ urlSecond }}" {% if translatedConfig.newTabSecond.value %}target="_blank"{% endif %}>{{ translatedConfig.btnLabelSecond.value }}</a>
+                </span>
+                </div>
+            </div>
+
+
+            <div class="michelis-third-block">
+                <div class="michelis-item--titleThird">
+                    {% if translatedConfig.titleThird.value %}
+                        {{ translatedConfig.titleThird.value }}
+                    {% endif %}
+                </div>
+
+                <div class="michelis-item--descriptionThird">
+                    {% if translatedConfig.descriptionThird.value %}
+                        {{ translatedConfig.descriptionThird.value }}
+                    {% endif %}
+                </div>
+
+                <div class="michelis-item--buttonThird">
+                <span>
+                    <a href="{{ urlThird }}" {% if translatedConfig.newTabThird.value %}target="_blank"{% endif %}>{{ translatedConfig.btnLabelThird.value }}</a>
+                </span>
+                </div>
+            </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

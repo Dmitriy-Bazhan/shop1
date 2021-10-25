@@ -1,0 +1,50 @@
+{% sw_extends '@Storefront/storefront/layout/sidebar/category-navigation.html.twig' %}
+
+{% block layout_navigation_categories %}
+    {% set navigationMaxDepth = 1 %}
+
+    {% if not level %}
+        {% set level = 0 %}
+    {% endif %}
+
+    {% set cls2 = "newactive" %}
+
+    {% block layout_navigation_categories_list %}
+        <ul {% if ulgeneral %}id="ul{{ ulgeneral }}"{% endif %} class="category-navigation level-{{ level }} {% if level > 0 %}d-none" {% endif %}
+            {% for item in navigationTree %}
+                {% set ulgeneral = random(1000, 9999) %}
+
+                {% block layout_navigation_categories_list_entry %}
+                    <li class="category-navigation-entry" >
+                            {% block layout_navigation_categories_link_children %}
+                                {% if level == 0 %} <div data-ul="ul{{ ulgeneral }}" class="m-top-link--arr "></div>{% endif %}
+
+                                <a class="category-navigation-link {% if level == 0 %} is-active{% endif %} "
+
+                                   href="{{ category_url(item.category) }}"
+                                   {% if category_linknewtab(item.category) %}target="_blank"{% endif %}>
+                                    {% block layout_navigation_categories_link_children_name %}
+                                        {{ item.category.translated.name }}
+                                    {% endblock %}
+                                </a>
+
+                            {% endblock %}
+
+                            {% block layout_navigation_categories_recoursion %}
+                                {% if level < navigationMaxDepth %}
+                                    {% sw_include '@Storefront/storefront/layout/sidebar/category-navigation.html.twig' with {
+                                        navigationTree: item.children,
+                                        activeResult: activeResult,
+                                        level: level + 1,
+                                        ulgeneral: ulgeneral
+                                    } only %}
+                                {% endif %}
+                            {% endblock %}
+                    </li>
+                {% endblock %}
+            {% endfor %}
+        </ul>
+    {% endblock %}
+
+{% endblock %}
+

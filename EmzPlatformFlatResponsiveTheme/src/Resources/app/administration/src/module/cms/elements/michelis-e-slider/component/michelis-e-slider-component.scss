@@ -1,0 +1,16 @@
+.michelis-e-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    align-items: start;
+
+    .michelis-e-slider__image-box {
+        display: grid;
+        position: relative;
+
+        .michelis-e-slider__image {
+            margin: 0 auto;
+            max-width: 100%;
+        }
+    }
+}

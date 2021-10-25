@@ -1,0 +1,102 @@
+{% block component_product_box_action_inner %}
+    {% set id = product.id %}
+    <div class="product-action">
+        {% set isAvailable = not product.isCloseout or (product.availableStock >= product.minPurchase) %}
+        {% set displayFrom = product.calculatedPrices.count > 1 %}
+        {% set displayBuyButton = isAvailable and not displayFrom and product.childCount <= 0 %}
+
+        {% if displayBuyButton and config('core.listing.allowBuyInListing') %}
+            {% block component_product_box_action_buy %}
+                {# @var product \Shopware\Core\Content\Product\SalesChannel\SalesChannelProductEntity #}
+                <form action="{{ path('frontend.checkout.line-item.add') }}"
+                      method="post"
+                      class="buy-widget"
+                      data-add-to-cart="true">
+
+                    {% block component_product_box_action_buy_csrf %}
+                        {{ sw_csrf('frontend.checkout.line-item.add') }}
+                    {% endblock %}
+
+                    {% block component_product_box_action_form %}
+
+                        {% block component_product_box_action_buy_redirect_input %}
+                            {# fallback redirect back to detail page is deactivated via js #}
+                            <input type="hidden"
+                                   name="redirectTo"
+                                   value="frontend.detail.page">
+
+                            <input type="hidden"
+                                   name="redirectParameters"
+                                   data-redirect-parameters="true"
+                                   value='{"productId": "{{ product.id }}"}'>
+                        {% endblock %}
+
+                        {% block page_product_detail_buy_product_buy_info %}
+                            <input type="hidden"
+                                   name="lineItems[{{ id }}][id]"
+                                   value="{{ id }}">
+                            <input type="hidden"
+                                   name="lineItems[{{ id }}][referencedId]"
+                                   value="{{ id }}">
+                            <input type="hidden"
+                                   name="lineItems[{{ id }}][type]"
+                                   value="product">
+                            <input type="hidden"
+                                   name="lineItems[{{ id }}][stackable]"
+                                   value="1">
+                            <input type="hidden"
+                                   name="lineItems[{{ id }}][removable]"
+                                   value="1">
+                            <input type="hidden"
+                                   name="lineItems[{{ id }}][quantity]"
+                                   value="{{ product.minPurchase }}">
+                        {% endblock %}
+
+                        {% block page_product_detail_product_buy_meta %}
+                            <input type="hidden"
+                                   name="product-name"
+                                   value="{{ product.translated.name }}">
+                        {% endblock %}
+
+                        {% block page_product_detail_product_buy_button %}
+                            <button class="btn btn-block btn-buy"
+                                    title="{{ "listing.boxAddProduct"|trans|striptags }}">
+                                <?xml version="1.0" encoding="UTF-8"?>
+                                <svg id="SVGDoc" width="20" height="20" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:avocode="https://avocode.com/" viewBox="0 0 20 20"><defs></defs><desc>Generated with Avocode.</desc><g><g><title>091-shopping-cart копия</title><image xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABiklEQVQ4T63UPUiXURTH8Y8liA1SIW46RLYERUTqqr0MBUEgTUFIS2NuFSE4KLi0NhWiQklDRAWJFS4RiEMFTTaFS4T2QkRlqBy9//j38Che7cADD5xzvve8/O6twVc0YAxXMG8bVoNBdKEdn3AAX7bKDGDFjuNZ+k7+D2Awnqdqqw/KYhcTe3ET77Ioa8EfMFsEXsAolvArA7qMXRFfBJ7GE5zFowxghH7HxyLwEN7gKoYygHuT3EaKwD1YwDB6MoCh42sYL9tmzGMKnRnAv6FlwLg539CcAbyYch6UASdwqmRh6/HjloV+V7sqAndgGkeTrqL9jaweTWnuhzFXBD7GGbzC/k1UGVp9mhYS78A/OqzFIl4g7vWWrLrC+H+PfbiDz9iN3/iBRuxMp8TifiJk9jLFr7qKLbfgPtoyyxvAjTJghdOHfsSSzuMeOvA6BczgYPLHEo9VilvvmTqByfSKR+IR1KX2g3kLl3Ebl9KoWjeqMHzRxnX8QTceVo0h4HdxDm+TMubCvwIcwktTB0+qBwAAAABJRU5ErkJggg==" width="20" height="20" transform="matrix(1,0,0,1,0,0)" ></image></g></g></svg>
+                                {{ "listing.boxAddProduct"|trans|sw_sanitize }}
+                            </button>
+                        {% endblock %}
+                    {% endblock %}
+                </form>
+            {% endblock %}
+        {% else %}
+            {% block component_product_box_action_detail %}
+                <a href="{{ seoUrl('frontend.detail.page', {'productId': id}) }}"
+                   class="btn btn-block btn-light"
+                   title="{{ "listing.boxProductDetails"|trans|striptags }}">
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <svg id="SVGDoc" width="20" height="20" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:avocode="https://avocode.com/" viewBox="0 0 20 20"><defs></defs><desc>Generated with Avocode.</desc><g><g><title>144-layout</title><image xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABl0lEQVQ4T63Uz4tOURzH8ddQatKoiZUVlhYsLCizGyOT4kl+xsaPMlODFfEfMDYalB+NDQpDKCE/FjI1mWxkKSMrhTHb2Yi+fG89i+fe+yyesznn3PM97/s93x+fLizETezzf3zDITzPfUw3cLBp32p5Hwe68Bjb8AJz2JPWK/AVt7Afb/JnrWBLMYBXAfyD19iUluvwHkdxLc/fYUONhw/RKIDjOJIXVmIGI7icwAnsrgGO4mQBvNMUwzX4gBMYww8sQz9+lkCX4Cm6q4BncDafOlXjXXG8tQp4GufScnnGeHEJeD6TNtMusE0HaefJATuP41hUQv6N6xiuAp5K0MXM+Cd8LwH2YjUmqoDDuJJl8xGR/aoRjTFQBWwu7AfYWQO8EKVWBRzC1fQw+nqwBng3ir+TwOiqoU4Ce9DbSeC/iLQSh1X4jGO4lDEMJdlRE8O16CuAL7E5LxTi0Fw201hfA5zExgA+wxY8wq9Q3eyI8PQL7mFX2oWalwnsdrwNYLRTpLyRlrM4nEoenxbgNvbWePgkbP4CzKKDE1tswmoAAAAASUVORK5CYII=" width="20" height="20" transform="matrix(1,0,0,1,0,0)" ></image></g></g></svg>
+                    {{ "listing.boxProductDetails"|trans|sw_sanitize }}
+                </a>
+            {% endblock %}
+        {% endif %}
+        {% if config('core.cart.wishlistEnabled') %}
+            {% block component_product_box_wishlist_action %}
+                {% sw_include '@Storefront/storefront/component/product/card/wishlist.html.twig' with {
+                    appearance: 'circle',
+                    productId: id
+                } %}
+            {% endblock %}
+        {% endif %}
+    </div>
+
+    {% block component_product_box_action_meta %}
+        <input type="hidden"
+               name="product-name"
+               value="{{ product.translated.name }}">
+
+        <input type="hidden"
+               name="product-id"
+               value="{{ id }}">
+    {% endblock %}
+{% endblock %}

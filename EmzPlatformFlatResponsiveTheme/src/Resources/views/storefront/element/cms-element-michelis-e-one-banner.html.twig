@@ -1,0 +1,31 @@
+{% block element_image_slider %}
+    {% set translatedConfig = element.translated.config %}
+    {% set bannersItems = translatedConfig.oneBanners.value %}
+
+    <section class="michelis-one-banner-category">
+            <div class="michelis-one-banner-container">
+                <div class="row michelis-one-category-list">
+                    {% if bannersItems|length > 0 %}
+                        {% for banner in bannersItems %}
+                            {% set link = banner.url ?? 'javascript:void(0)' %}
+                            {% set showBtn = banner.url ? true : false %}
+
+                            <div class="col-md-12 michelis-one-category-list__item_one">
+                                <div class="m-bot-slider" {% if banner.mediaUrl %}style="background-image: url('{{ banner.mediaUrl }}')"{% endif %}>
+                                    <div class="m-mid-slid">
+                                        <div class="michelis-category-list__label_one"><p class="m-title">{{ banner.label }}</p></div>
+                                    <div class="michelis-category-list__title_one"><p class="m-lable">{{ banner.title }}</p></div>
+                                    {% if showBtn %}
+                                        <div class="m-mid-slid_bot">
+                                            <a href="{{ link }}" class="michelis-btn_one">{{ banner.btnName }}</a>
+                                        </div>
+                                    {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+    </section>
+{% endblock %}

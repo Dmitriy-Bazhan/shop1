@@ -1,0 +1,48 @@
+.michelis-e-double-banner-component {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    
+    .michelis-double-banner-nocontent {
+        align-items: center;
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        
+        .michelis-row {
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        
+        .banner {
+            display: block;
+            min-height: 80px;
+            background: #aaaeb1;
+            margin: 0 2%;
+        }
+        
+        .block {
+            width: 50%;
+        }
+    }
+    
+    .michelis-double-banner-content {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    
+        &-banner {
+            width: 21%;
+            margin: 2%;
+            height: auto;
+            object-fit: cover;
+        }
+    }
+
+}

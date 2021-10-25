@@ -1,0 +1,186 @@
+{% block michelis_e_top_categories_down_config %}
+    <div class="michelis-e-top-categories-down-config">
+        {% block michelis_e_top_categories_down_config_media_upload %}
+            <sw-cms-mapping-field
+                    :label="$tc('michelis.cms.elements.michelis-e-top-categories-down.labels.image')"
+                    valueTypes="entity"
+                    entity="media"
+                    v-model="element.config.media">
+
+                <sw-media-upload-v2 variant="regular"
+                                    :uploadTag="uploadTag"
+                                    :source="previewSource"
+                                    :allowMultiSelect="false"
+                                    :defaultFolder="cmsPageState.pageEntityName"
+                                    :caption="$tc('michelis.cms.elements.michelis-e-top-categories-down.labels.mediaUpload')"
+                                    @media-upload-sidebar-open="onOpenMediaModal"
+                                    @media-upload-remove-image="onImageRemove">
+                </sw-media-upload-v2>
+
+                <div class="michelis-e-top-categories-down-config-image-preview" slot="preview" slot-scope="{ demoValue }">
+                    <img :src="demoValue.url" v-if="demoValue.url">
+                    <sw-alert class="michelis-e-top-categories-down-config-image-preview-info" variant="info" v-else>
+                        {{ $tc('michelis.cms.elements.michelis-e-top-categories-down.labels.mappingEmptyPreview') }}
+                    </sw-alert>
+                </div>
+            </sw-cms-mapping-field>
+
+            <sw-upload-listener
+                    :uploadTag="uploadTag"
+                    autoUpload
+                    @media-upload-finish="onImageUpload">
+            </sw-upload-listener>
+        {% endblock %}
+
+        {% block michelis_e_top_categories_down_config_title %}
+            <sw-field class="michelis-e-top-categories-down-config-title"
+                      v-model="element.config.title.value"
+                      type="text"
+                      :label="$tc('michelis.cms.elements.michelis-e-top-categories-down.title')"
+                      :placeholder="$tc('michelis.cms.elements.michelis-e-top-categories-down.placeholders.title')">
+            </sw-field>
+        {% endblock %}
+
+        {% block michelis_e_top_categories_down_config_description %}
+            <sw-field class="michelis-e-top-categories-down-config-description"
+                      v-model="element.config.description.value"
+                      type="text"
+                      :label="$tc('michelis.cms.elements.michelis-e-top-categories-down.labels.description')"
+                      :placeholder="$tc('michelis.cms.elements.michelis-e-top-categories-down.placeholders.description')">
+            </sw-field>
+        {% endblock %}
+
+        {% block michelis_e_top_categories_down_config_btn_url %}
+            <sw-field v-model="element.config.url.value"
+                      class="michelis-e-top-categories-down-config-url"
+                      type="text"
+                      :label="$tc('michelis.cms.elements.michelis-e-top-categories-down.labels.url')"
+                      :placeholder="$tc('michelis.cms.elements.michelis-e-top-categories-down.placeholders.url')">
+            </sw-field>
+        {% endblock %}
+
+        {% block michelis_e_top_categories_down_config_btn_name %}
+            <sw-field v-model="element.config.btnLabel.value"
+                      class="michelis-e-top-categories-down-config-btnlabel"
+                      type="text"
+                      :label="$tc('michelis.cms.elements.michelis-e-top-categories-down.labels.btnLabel')"
+                      :placeholder="$tc('michelis.cms.elements.michelis-e-top-categories-down.placeholders.btnLabel')">
+            </sw-field>
+        {% endblock %}
+
+        {% block michelis_e_top_categories_down_config_newTab %}
+            <sw-field v-model="element.config.newTab.value"
+                      class="michelis-e-top-categories-down-config-newTab"
+                      type="switch"
+                      :label="$tc('michelis.cms.elements.michelis-e-top-categories-down.labels.linkNewTab')">
+            </sw-field>
+        {% endblock %}
+
+         Block Second
+
+        {% block michelis_e_top_categories_down_config_titleSecond %}
+            <sw-field class="michelis-e-top-categories-down-config-titleSecond"
+                      v-model="element.config.titleSecond.value"
+                      type="text"
+                      :label="$tc('michelis.cms.elements.michelis-e-top-categories-down.titleSecond')"
+                      :placeholder="$tc('michelis.cms.elements.michelis-e-top-categories-down.placeholders.titleSecond')">
+            </sw-field>
+        {% endblock %}
+
+        {% block michelis_e_top_categories_down_config_descriptionSecond %}
+            <sw-field class="michelis-e-top-categories-down-config-descriptionSecond"
+                      v-model="element.config.descriptionSecond.value"
+                      type="text"
+                      :label="$tc('michelis.cms.elements.michelis-e-top-categories-down.labels.descriptionSecond')"
+                      :placeholder="$tc('michelis.cms.elements.michelis-e-top-categories-down.placeholders.descriptionSecond')">
+            </sw-field>
+        {% endblock %}
+
+        {% block michelis_e_top_categories_down_config_btn_urlSecond %}
+            <sw-field v-model="element.config.urlSecond.value"
+                      class="michelis-e-top-categories-down-config-urlSecond"
+                      type="text"
+                      :label="$tc('michelis.cms.elements.michelis-e-top-categories-down.labels.urlSecond')"
+                      :placeholder="$tc('michelis.cms.elements.michelis-e-top-categories-down.placeholders.urlSecond')">
+            </sw-field>
+        {% endblock %}
+
+        {% block michelis_e_top_categories_down_config_btn_nameSecond %}
+            <sw-field v-model="element.config.btnLabelSecond.value"
+                      class="michelis-e-top-categories-down-config-btnlabelSecond"
+                      type="text"
+                      :label="$tc('michelis.cms.elements.michelis-e-top-categories-down.labels.btnLabelSecond')"
+                      :placeholder="$tc('michelis.cms.elements.michelis-e-top-categories-down.placeholders.btnLabelSecond')">
+            </sw-field>
+        {% endblock %}
+
+        {% block michelis_e_top_categories_down_config_newTabSecond %}
+            <sw-field v-model="element.config.newTabSecond.value"
+                      class="michelis-e-top-categories-down-config-newTabSecond"
+                      type="switch"
+                      :label="$tc('michelis.cms.elements.michelis-e-top-categories-down.labels.linkNewTab')">
+            </sw-field>
+        {% endblock %}
+
+         Block Third
+
+        {% block michelis_e_top_categories_down_config_titleThird %}
+            <sw-field class="michelis-e-top-categories-down-config-titleThird"
+                      v-model="element.config.titleThird.value"
+                      type="text"
+                      :label="$tc('michelis.cms.elements.michelis-e-top-categories-down.titleThird')"
+                      :placeholder="$tc('michelis.cms.elements.michelis-e-top-categories-down.placeholders.titleThird')">
+            </sw-field>
+        {% endblock %}
+
+        {% block michelis_e_top_categories_down_config_descriptionThird %}
+            <sw-field class="michelis-e-top-categories-down-config-descriptionThird"
+                      v-model="element.config.descriptionThird.value"
+                      type="text"
+                      :label="$tc('michelis.cms.elements.michelis-e-top-categories-down.labels.descriptionThird')"
+                      :placeholder="$tc('michelis.cms.elements.michelis-e-top-categories-down.placeholders.descriptionThird')">
+            </sw-field>
+        {% endblock %}
+
+        {% block michelis_e_top_categories_down_config_btn_urlThird %}
+            <sw-field v-model="element.config.urlThird.value"
+                      class="michelis-e-top-categories-down-config-urlThird"
+                      type="text"
+                      :label="$tc('michelis.cms.elements.michelis-e-top-categories-down.labels.urlThird')"
+                      :placeholder="$tc('michelis.cms.elements.michelis-e-top-categories-down.placeholders.urlThird')">
+            </sw-field>
+        {% endblock %}
+
+        {% block michelis_e_top_categories_down_config_btn_nameThird %}
+            <sw-field v-model="element.config.btnLabelThird.value"
+                      class="michelis-e-top-categories-down-config-btnlabelThird"
+                      type="text"
+                      :label="$tc('michelis.cms.elements.michelis-e-top-categories-down.labels.btnLabelThird')"
+                      :placeholder="$tc('michelis.cms.elements.michelis-e-top-categories-down.placeholders.btnLabelThird')">
+            </sw-field>
+        {% endblock %}
+
+        {% block michelis_e_top_categories_down_config_newTabThird %}
+            <sw-field v-model="element.config.newTabThird.value"
+                      class="michelis-e-top-categories-down-config-newTabThird"
+                      type="switch"
+                      :label="$tc('michelis.cms.elements.michelis-e-top-categories-down.labels.linkNewTab')">
+            </sw-field>
+        {% endblock %}
+
+        {% block michelis_e_top_categories_down_config_media_modal %}
+            <sw-media-modal-v2
+                    variant="regular"
+                    v-if="mediaModalIsOpen"
+                    :caption="$tc('michelis.cms.elements.michelis-e-top-categories-down.labels.mediaUpload')"
+                    :entityContext="cmsPageState.entityName"
+                    :allowMultiSelect="false"
+                    :initialFolderId="cmsPageState.defaultMediaFolderId"
+                    @media-upload-remove-image="onImageRemove"
+                    @media-modal-selection-change="onSelectionChanges"
+                    @modal-close="onCloseModal">
+            </sw-media-modal-v2>
+        {% endblock %}
+
+    </div>
+{% endblock %}

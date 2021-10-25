@@ -1,0 +1,21 @@
+{% block cms_block_michelis_img_button %}
+
+    {% block cms_block_michelis_img_button_first %}
+        {% set element = block.slots.getSlot('imageSlot') %}
+
+        <div class="michelis-img-block-first col-md-8">
+            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+        </div>
+    {% endblock %}
+
+
+    {% block cms_block_michelis_img_button_second %}
+        {% set element = block.slots.getSlot('button') %}
+
+        <div class="michelis-button-block-second col-md-4">
+            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+        </div>
+    {% endblock %}
+
+
+{% endblock %}

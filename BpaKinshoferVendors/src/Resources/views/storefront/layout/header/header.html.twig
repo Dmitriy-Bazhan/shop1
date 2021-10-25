@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/storefront/layout/header/header.html.twig' %}
+
+{% block layout_header_actions_account %}
+    <div class="col-auto">
+        <div class="account-menu">
+            {% sw_include '@BpaKinshoferVendors/storefront/layout/header/actions/dealer-widget.html.twig' %}
+        </div>
+    </div>
+
+    {{ parent() }}
+{% endblock %}

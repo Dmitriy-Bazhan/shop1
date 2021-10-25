@@ -1,0 +1,13 @@
+@import "~scss/variables";
+
+.bpa-qcf-view-import-importer {
+    .sw-file-input {
+        margin-bottom: 20px;
+
+        .sw-file-input__dropzone {
+            border: 1px solid $color-gray-300;
+            min-height: unset;
+        }
+    }
+
+}

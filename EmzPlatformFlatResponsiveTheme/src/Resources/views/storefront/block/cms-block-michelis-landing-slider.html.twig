@@ -1,0 +1,11 @@
+{% block cms_block_michelis_landing_slider %}
+    {% set element = block.slots.getSlot('landingSlider') %}
+
+    <section class="michelis-landing-slider-banner">
+        {% block cms_block_michelis_landing_slider_inner %}
+            <slick :options="landingBannerSlickOptions">
+                {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+            </slick>
+        {% endblock %}
+    </section>
+{% endblock %}

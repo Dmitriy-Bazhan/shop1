@@ -1,0 +1,42 @@
+{
+    "name": "emz/emz-platform-flat-responsive-theme",
+    "description": "New look for your store",
+    "version": "v1.1.2",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "8mylez GmbH",
+            "homepage": "https://8mylez.com"
+        }
+    ],
+    "require": {
+        "shopware/core": "*"
+    },
+    "minimum-stability": "RC",
+     "autoload": {
+        "psr-4": {
+            "Emz\\EmzPlatformFlatResponsiveTheme\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "Emz\\EmzPlatformFlatResponsiveTheme\\EmzPlatformFlatResponsiveTheme",
+        "label": {
+            "de-DE": "Flat Responsive Theme",
+            "en-GB": "Flat Responsive Theme"
+        },
+        "description": {
+            "de-DE": "Flat Responsive Theme",
+            "en-GB": "Flat Responsive Theme"
+        },
+        "copyright": "(c) by 8mylez GmbH",
+        "manufacturerLink": {
+            "de-DE": "https://8mylez.com",
+            "en-GB": "https://8mylez.com"
+        },
+        "supportLink": {
+            "de-DE": "https://8mylez.com/kontakt/",
+            "en-GB": "https://8mylez.com/kontakt/"
+        }
+    }
+}

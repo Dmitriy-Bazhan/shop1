@@ -1,0 +1,16 @@
+{% block michelis_e_double_banner_component %}
+    <div class="michelis-e-double-banner-component">
+        
+        <div v-if="!element.data.doubleBanners" class="michelis-double-banner-nocontent">
+            <div class="michelis-row">
+                <span class="banner block"></span>
+                <span class="banner block"></span>
+            </div>
+        </div>
+        
+        <div v-else class="michelis-double-banner-content">
+            <img class="michelis-double-banner-content-banner" v-for="banner in element.data.doubleBanners" :src="banner.mediaUrl">
+        </div>
+        
+    </div>
+{% endblock %}

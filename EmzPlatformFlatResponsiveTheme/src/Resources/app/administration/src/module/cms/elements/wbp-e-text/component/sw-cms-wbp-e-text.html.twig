@@ -1,0 +1,46 @@
+4{% block sw_cms_wbp_e_text %}
+    <div class="sw-cms-wbp-e-text">
+
+        <div class="wbp-text-img-titleM">
+            <h6 v-if="element.config.titleM.value">{{ element.config.titleM.value }}</h6>
+            <h6 v-else>{{ $tc('michelis.cms.elements.wbp-e-text.titleM') }}</h6>
+        </div>
+
+        <div class="wbp-text-img-title">
+            <h6 v-if="element.config.title.value">{{ element.config.title.value }}</h6>
+            <h6 v-else>{{ $tc('michelis.cms.elements.wbp-e-text.title') }}</h6>
+        </div>
+
+    <div class="wbp-text-img-textarea">
+
+        <div
+                v-if="element.config.content.source === 'mapped'"
+                class="sw-cms-wbp-e-text__mapping-preview content-editor"
+                v-html="$sanitize(demoValue)"
+        ></div>
+
+        <sw-text-editor
+                v-else
+                v-model="element.config.content.value"
+                :disabled="disabled"
+                :vertical-align="element.config.verticalAlign.value"
+                :allow-inline-data-mapping="true"
+                :is-inline-edit="true"
+                @blur="onBlur"
+                @input="onInput"
+        />
+    </div>
+
+
+        <div class="wbp-text-img-titleSecond">
+            <h6 v-if="element.config.titleSecond.value">{{ element.config.titleSecond.value }}</h6>
+            <h6 v-else>{{ $tc('michelis.cms.elements.wbp-e-text.titleSecond') }}</h6>
+        </div>
+
+        <div class="wbp-text-img-time">
+            <h6 v-if="element.config.time.value">{{ element.config.time.value }}</h6>
+            <h6 v-else>{{ $tc('michelis.cms.elements.wbp-e-text.time') }}</h6>
+        </div>
+
+    </div>
+{% endblock %}

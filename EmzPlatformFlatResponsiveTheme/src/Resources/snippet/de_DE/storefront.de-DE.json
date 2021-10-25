@@ -1,0 +1,44 @@
+{
+    "michelis": {
+        "header": {
+            "logoLink": "Zur Startseite wechseln",
+            "searchButton": "Suchen",
+            "searchPlaceholder": "Suchen",
+            "searchAllResults": "Alle Suchergebnisse anzeigen",
+            "searchResults": "{1} 1 Ergebnis|]1,Inf[ %count% Ergebnisse",
+            "supportInfo": "<strong>Fragen zu Ihrer Bestellung?</strong><br /><strong><a href=\"tel:+4912345-123456789\">12345-123456789</a></strong> <small>Täglich 7:30 bis 22:00 Uhr</small>",
+            "indexLinkService": "Service/Hilfe",
+            "searchNoResult": "Keine Suchergebnisse gefunden.",
+            "wishlist": "Merkzettel",
+            "kauf": "NEU: Kauf auf Rechnung",
+            "versandkostenfrei": "Versandkostenfrei ab 69,50€",
+            "tel": "05257 - 5716",
+            "email": "shop@michelis.de",
+            "facebook": "Facebook",
+            "instagram": "Instagram",
+            "button": "Mein Konto",
+            "artikel":"ARTIKEL",
+            "bewertungen": "(Bewertungen)"
+        },
+        "footer": {
+            "info": "Telefonische Unterstützung unter:",
+            "footertel": "05257 - 5716",
+            "offnungszeiten": "Öffnungszeiten:",
+            "montag": "Montag bis Freitag",
+            "worktime": "9:00 - 12:30 und 14:30 - 18:30 Uhr",
+            "workdays": "Samstag 9:00 - 13:00 Uhr",
+            "newslettertitle": "Newsletter",
+            "newsletter": "Abonnieren Sie den kostenlosen Michelis Newsletter und verpassen Sie keine Neuigkeiten und Aktionen mehr.",
+            "checkout": "Ich habe die Datenschutzbestimmungen zur Kenntnis genommen.",
+            "includeVat": "* Alle Preise inkl. gesetzl. Mehrwertsteuer zzgl. <a data-toggle=\"modal\" href=\"%url%\" data-url=\"%url%\">Versandkosten</a> und ggf. Nachnahmegebühren, wenn nicht anders beschrieben. Alle Preise freibleibend. Irrtümer vorbehalten. Sonderanfertigungen und individuell gestaltete Artikel (z. B. Geschenkideen) sind vom Umtausch oder einer Rücknahme ausgeschlossen.",
+            "checkbox": "Ich habe die <a data-toggle=\"modal\" data-url=\"%url%\" href=\"%url%\" title=\"Datenschutzbestimmungen\">Datenschutzbestimmungen</a> zur Kenntnis genommen.",
+            "MwSt": "inkl. MwSt. ggf. zzgl. Versandkosten"
+        }
+    }
+}
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+.michelis-e-one-banner-preview {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+
+    .rowBanner {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        margin-bottom: 5px;
+    }
+    
+    .banner {
+        display: block;
+        min-height: 25px;
+        background: #aaaeb1;
+        margin: 0 2%;
+    }
+    
+    .block {
+        width: 100%;
+    }
+}

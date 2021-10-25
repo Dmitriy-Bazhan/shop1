@@ -1,0 +1,93 @@
+{% block cms_element_bpa_qcf_form_e %}
+    <div class="cms-element-{{ element.type }}">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        {% block cms_element_bpa_qcf_form_e_title %}
+
+                            <div class="card-title mb-4">
+                                {{ "bpa-quick-connector-finder.finderForm.title"|trans }}
+                            </div>
+                        {% endblock %}
+
+                        {% set action = path('bpa.qcf.connector.finder') %}
+
+                        {% block cms_element_bpa_qcf_form_e_form %}
+
+                            <form action="{{ action }}"
+                                  method="get"
+                                  data-bpa-qcf-form="true">
+
+                                <div class="form-content">
+                                    <div class="form-row">
+                                        {% block cms_element_bpa_qcf_form_e_form_manufacturers %}
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label" for="bpaQcfManufacturer">
+                                                    {{ "bpa-quick-connector-finder.filters.excavatorManufacturer"|trans }} {{ "general.required"|trans }}
+                                                </label>
+
+                                                <select name="bpaQcfManufacturer"
+                                                        id="bpaQcfManufacturer"
+                                                        required="required"
+                                                        class="custom-select">
+
+                                                        <option selected="selected" disabled="disabled" value="">{{ "bpa-quick-connector-finder.filters.excavatorManufacturer"|trans }}</option>
+
+
+                                                    {% set array = {'0a9e43e2b9e42b99d2cf7bcf1e61e48':'1ewwe','0be17b0343344aff9673db412cb30f62':'321', '0cf925fc74c040cd94dd97e72c08fa04':'fsdfsd'} %}
+                                                    {% for id, manufacturer  in array %}
+                                                        <option id="qcf-product-manufacture" value="{{ id }}">{{ manufacturer }}</option>
+                                                    {% endfor %}
+
+{#                                                    {% if element.manufacturers %}#}
+{#                                                        {% for manufacturer in element.manufacturers %}#}
+{#                                                            <option value="{{ array.id }}">{{ manufacturer.name }}</option>#}
+{#                                                        {% endfor %}#}
+{#                                                    {% endif %}#}
+                                                </select>
+                                            </div>
+                                        {% endblock %}
+
+                                        {% block cms_element_bpa_qcf_form_e_form_types %}
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label" for="bpaQcfType">
+                                                    {{ "bpa-quick-connector-finder.filters.excavatorType"|trans }}
+                                                </label>
+<options id="as"></options>
+                                                <select name="bpaQcfType"
+                                                        id="bpaQcfType"
+                                                        required="required"
+                                                        class="custom-select">
+                                                    <option selected="selected" disabled="disabled" value="">{{ "bpa-quick-connector-finder.filters.excavatorType"|trans }}</option>
+                                                </select>
+                                            </div>
+                                        {% endblock %}
+                                    </div>
+
+                                    <div class="form-row">
+                                        {% block cms_element_bpa_qcf_form_e_form_message %}
+                                            <div class="form-group col-md-6">
+                                                {{ "bpa-quick-connector-finder.finderForm.message"|trans({
+                                                    '%url%': path('frontend.cms.page', { id: config('core.basicInformation.contactPage') })
+                                                })|raw }}
+                                            </div>
+                                        {% endblock %}
+
+                                        {% block cms_element_bpa_qcf_form_e_form_submit %}
+                                            <div class="form-group col-md-6">
+                                                <button id="bpaQcfBtnSubmit"  type="submit" class="btn btn-primary float-right">
+                                                    {{ "bpa-quick-connector-finder.finderForm.submit"|trans }}
+                                                </button>
+                                            </div>
+                                        {% endblock %}
+                                    </div>
+                                </div>
+                            </form>
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

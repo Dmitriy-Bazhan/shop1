@@ -1,0 +1,10 @@
+.sw-cms-michelis-img-button-preview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 20px;
+  padding: 15px;
+
+  .michelis-img-button-block-btn {
+    margin: auto;
+  }
+}

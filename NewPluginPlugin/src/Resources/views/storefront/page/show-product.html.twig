@@ -1,0 +1,15 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_content %}
+
+    <p>{{ product.name }}</p>
+    <a href="{{ url('newplugin.showProducts') }}">BACK</a>
+    <p></p>
+
+    {% for media in product.media.media.elements %}
+
+        <img src="{{ media.url }}" style="width: 25%;">
+
+    {% endfor %}
+
+{% endblock %}

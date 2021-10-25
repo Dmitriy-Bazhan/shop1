@@ -1,0 +1,9 @@
+{% block cms_block_bpa_qcf_form %}
+    {% set element = block.slots.getSlot('form') %}
+
+    <div class="col-12 cms-block-bpa-qcf-form" data-cms-element-id="{{ element.id }}">
+        {% block cms_block_bpa_qcf_form_inner %}
+            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+        {% endblock %}
+    </div>
+{% endblock %}

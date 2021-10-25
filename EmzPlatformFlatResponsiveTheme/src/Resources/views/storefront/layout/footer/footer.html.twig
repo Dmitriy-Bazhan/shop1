@@ -1,0 +1,317 @@
+{% sw_extends '@Storefront/storefront/layout/footer/footer.html.twig' %}
+
+{% block layout_footer_inner_container %}
+
+    {% block layout_footer_navigation_newsletter_content %}
+        <div class="container-fluid Newsletter-wrapper">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 col-sm-12 newsletter-text">
+                        <h2>Newsletter</h2>
+                        <p>Abonnieren Sie den kostenlosen Michelis Newsletter und verpassen Sie keine Neuigkeiten und Aktionen mehr.</p>
+
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div id="collapseFooterNewsletter"
+                             class="footer-column-content footer-contact {{ newsletterShowClass }}"
+                             aria-labelledby="collapseFooterNewsletterTitle">
+                            <div class="footer-column-content-inner">
+                                {% sw_include '@Storefront/storefront/component/footer/zen-footer-newsletter.html.twig' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    {% endblock %}
+
+    <div class="container">
+
+        {% block layout_footer_navigation %}
+            <div id="footerColumns"
+                 class="row "
+                 data-collapse-footer="true">
+                {% block layout_footer_navigation_hotline %}
+                    <div class="col-lg-3 col-md-6 footer-column js-footer-column">
+                        {% block layout_footer_navigation_hotline_headline %}
+                            <div class="footer-column-headline footer-headline js-footer-column-headline js-collapse-footer-column-trigger"
+                                 id="collapseFooterHotlineTitle"
+                                 data-target="#collapseFooterHotline"
+                                 aria-expanded="true"
+                                 aria-controls="collapseFooterHotline">
+                                {{ 'footer.serviceHotlineHeadline'|trans|sw_sanitize }}
+                                {% block layout_footer_navigation_hotline_icons %}
+                                    <div class="footer-column-toggle">
+                                        <span class="footer-plus-icon">
+                                            {% sw_icon 'plus' %}
+                                        </span>
+                                        <span class="footer-minus-icon">
+                                            {% sw_icon 'minus' %}
+                                        </span>
+                                    </div>
+                                {% endblock %}
+                            </div>
+                        {% endblock %}
+
+                        {% block layout_footer_navigation_hotline_content %}
+                            <div id="collapseFooterHotline"
+                                 class="footer-column-content collapse js-footer-column-content footer-contact"
+                                 aria-labelledby="collapseFooterHotlineTitle">
+                                <div class="footer-column-content-inner">
+
+                                    <p class="m-footer-contact-hotline">
+                                        {{ 'michelis.footer.info'|trans|sw_sanitize }}
+                                    </p>
+                                    <ul class="list-unstyled">
+                                        <li class="footer-link-item">
+                                           <span class="m-footer-contact-tel footer-link">
+                                               <?xml version="1.0" encoding="UTF-8"?>
+                                               <svg id="SVGDoc" width="20" height="20" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:avocode="https://avocode.com/" viewBox="0 0 20 20"><defs></defs><desc>Generated with Avocode.</desc><g><g><title>135-phone-call-1</title><image xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAACMElEQVQ4T43VSaiPYRQG8N8VoSyEjCsyLpQiyXAzrZSIJLoUFhIWylDmoQxFKUMo85CFkI2NMbOUSApRiFBsJJLQuc5X3/13/+59N9/3vee8zznveZ5zvhr/VlucwJT8XoQ9+R6PFhiIH3iB3yVbg9ea/HqAwbiIPuiNZdie9lpcL528gC24WwkcgLNwDEuwMx3uYBgG4RE6Yga6YTSGp98BzC+DBuAbdEfLkqEVfuI5+lW53knMxGWML3wC8E/lZhrPYGrWN2oXazpGYS2+YAW24jDmhkMBeAjzKjJ5iV6IbH+lbTU25fs0RNDTGai+PAXgVYwtARbZzcbxikD9cQk90AWf8pY3UBuA79EBbfJgMDixguXKMnbGR9SD5HMkWgfgNixH13T6kJELSVWTXNQxstuHNdiIIXGoJ17hCOZgAJ6WolcDLO+HdAJ4RJHFw9RcO3xLFjekeFc2A7F9ZIdrBWB0R2guOmVCApzHpCZqGS3ZoA3LddqLBXntuH6sYD86YzNWlTKNromuCnJuJwe3Ch2Wb/QMfVO8N9NwDpNxBXWpgP34ivsYl35LsaOSyejZt9kdkVkxENZjXSlygBdAkeXZIAQLG5NGsB4shy4XY3cCDcVRhKzGNELU4xhx1bQWUcMhBkanZrAcLtFRdf8Tb9iigz7ncI3BcCqzr4wRg+Eg7jXVDcXBICXIifUdwei7nJMxuqI8T4pebuaN6n8BwXJMmahzsV5jVzAcG38BYxpxzQ0BtmEAAAAASUVORK5CYII=" width="20" height="20" transform="matrix(1,0,0,1,0,0)" ></image></g></g></svg>
+                                               <a href="tel:{{ 'michelis.footer.footertellink'|trans|sw_sanitize }}">{{ 'michelis.footer.footertel'|trans|sw_sanitize }}</a>
+                                           </span>
+                                        </li>
+                                        <li class="footer-link-item">
+                                           <span class=" m-footer-contact-mail m-footer-contact-email">
+                                               <?xml version="1.0" encoding="UTF-8"?>
+                                               <svg id="SVGDoc" width="20" height="16" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:avocode="https://avocode.com/" viewBox="0 0 20 16"><defs></defs><desc>Generated with Avocode.</desc><g><g><title>159-email</title><image xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAABS0lEQVQ4T63UzytmURzH8ddDkbLDwkIjFkQ2dlKTmkY2ymwmQg/Kgr8AxWIsWNpNU8hipkhNjT9AKUmWVqSkZIVSVpQfnZlz9fQ0Dzfczb2d8/28v5/z+XZuxr+nCeOoRSaupX094BTfsR/EbdhJq36h7lMAHqABW+jGdRQVvSC+j/tl+IPPOAnAsHGBKtzgKzZSOu7COspxjooADBks4Ac2UR0jGMJRAXAdltCBS3xEP6YS4Bp6o/gbpuP3DGbzoBOYi2vzmIzfocFIAlxFX46wHsuxc4hjGHfRVTjBLsIJDnM0zwKTuixW8hyOYvE/UYS6bCGHufXF6EGYepjmbYFcf+NLGmDKgWtB43sC/zZOgD8xmNZKgbpK1CTAXxh4I/BpylcoRTOOXwn9EK9wSXDYju1XgvJlncmvqhVjIYOcXNP0SCI7i1d37xGI6kXxjx3AawAAAABJRU5ErkJggg==" width="20" height="16" transform="matrix(1,0,0,1,0,0)" ></image></g></g></svg>
+                                               <a href="mailto:{{ 'michelis.header.email'|trans|sw_sanitize }}">{{ 'michelis.header.email'|trans|sw_sanitize }}</a>
+                                           </span>
+                                        </li>
+                                    </ul>
+                                    <p class="m-footer-contact-hotline">{{ 'michelis.footer.offnungszeiten'|trans|sw_sanitize }}</p>
+
+                                    <ul class="list-unstyled">
+                                        <li class="footer-link-item">
+                                           <span class="m-footer-contact-montag ">
+                                               <?xml version="1.0" encoding="UTF-8"?>
+                                               <svg id="SVGDoc" width="20" height="20" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:avocode="https://avocode.com/" viewBox="0 0 20 20"><defs></defs><desc>Generated with Avocode.</desc><g><g><title>167-wall-clock</title><image xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABuklEQVQ4T53Uy6uOURQG8N+hE0kY8D+QqRMx8weQ+/0SKXL/DwxkihRSyN2hXMYGRsotI6EMGBuQlBDR0tra5+19v/fLqq/evr3Ws9fa63meEd2xBVuxFJOqtIe4jCv41SwfacFbi0uYmmev8RS/MYb5+f9PbMe1GqMJeByH8BV7cSu/65q4aA1OYSZOZ+7fnBrwBA7iNjY0xnmAaVjSmCjG3oyz2FMDLsN93MXKlmf4himNBkra9WxgPcZLhz8Qv+kdO3qfZ7M7zj9hBkYDMJYwjk2I29qiD3AF7mBnAD7C4o5xCngfYOQFC14GYHy8wbwBnHyLOZg1IOcZFhTA4FJsqys+JGAbb0vNOewaBjD4tg9Bq8MDLp0A+KpSQF1zEgdSOaGKQRFqGosOH2Nhy1JCJaGI0O22HrAJS9mYelyXUiu1L/AOq4YAW457hTaRH67xpWeLXbhB6M95OLlsbXVq+GbKaIim/qUEneL9juJ8TYMz2J0+Fz74X9HkVVhRuMZH7E9JNk00amJZx3AVR+qb24ga3V2sXPo5wmQj5qbJFoxY6I0+wDgfxY505EWN2Z8kLy/ge/Nd/gD2V1p/UfVHAgAAAABJRU5ErkJggg==" width="20" height="20" transform="matrix(1,0,0,1,0,0)" ></image></g></g></svg>
+                                               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20"><g><g><image width="20" height="20" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABuklEQVQ4T53Uy6uOURQG8N+hE0kY8D+QqRMx8weQ+/0SKXL/DwxkihRSyN2hXMYGRsotI6EMGBuQlBDR0tra5+19v/fLqq/evr3Ws9fa63meEd2xBVuxFJOqtIe4jCv41SwfacFbi0uYmmev8RS/MYb5+f9PbMe1GqMJeByH8BV7cSu/65q4aA1OYSZOZ+7fnBrwBA7iNjY0xnmAaVjSmCjG3oyz2FMDLsN93MXKlmf4himNBkra9WxgPcZLhz8Qv+kdO3qfZ7M7zj9hBkYDMJYwjk2I29qiD3AF7mBnAD7C4o5xCngfYOQFC14GYHy8wbwBnHyLOZg1IOcZFhTA4FJsqys+JGAbb0vNOewaBjD4tg9Bq8MDLp0A+KpSQF1zEgdSOaGKQRFqGosOH2Nhy1JCJaGI0O22HrAJS9mYelyXUiu1L/AOq4YAW457hTaRH67xpWeLXbhB6M95OLlsbXVq+GbKaIim/qUEneL9juJ8TYMz2J0+Fz74X9HkVVhRuMZH7E9JNk00amJZx3AVR+qb24ga3V2sXPo5wmQj5qbJFoxY6I0+wDgfxY505EWN2Z8kLy/ge/Nd/gD2V1p/UfVHAgAAAABJRU5ErkJggg=="/></g></g></svg>
+
+                                                {{ 'michelis.footer.montag'|trans|sw_sanitize }}
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url('newplugin.showProducts') }}">New Plugin</a>
+                                        </li>
+                                        <li class="footer-link-item ">
+                                            <span class="m-footer-contact-worktime">
+                                                {{ 'michelis.footer.worktime'|trans|sw_sanitize }}
+                                            </span>
+                                        </li>
+                                        <li class="footer-link-item ">
+                                            <span class="m-footer-contact-workdays">
+                                                {{ 'michelis.footer.workdays'|trans|sw_sanitize }}
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+
+                {% block layout_footer_navigation_columns %}
+
+                    {% for root in page.footer.navigation.tree %}
+                        {% block layout_footer_navigation_column %}
+                            <div class="col-lg-3 col-md-6  footer-column js-footer-column">
+                                {% block layout_footer_navigation_information_headline %}
+                                    <div class="footer-column-headline footer-headline js-collapse-footer-column-trigger"
+                                         data-target="#collapseFooterTitle{{ loop.index }}"
+                                         aria-expanded="true"
+                                         aria-controls="collapseFooter{{ loop.index }}">
+
+                                        {% if root.category.type == 'folder' %}
+                                            {{ root.category.translated.name }}
+                                        {% else %}
+                                            <a href="{{ category_url(root.category) }}"
+                                               {% if category_linknewtab(root.category) %}target="_blank"{% endif %}
+                                               title="{{ root.category.translated.name }}">
+                                                {{ root.category.translated.name }}
+                                            </a>
+                                        {% endif %}
+                                        {% block layout_footer_navigation_information_icons %}
+                                            <div class="footer-column-toggle">
+                                                <span class="footer-plus-icon">
+                                                    {% sw_icon 'plus' %}
+                                                </span>
+                                                <span class="footer-minus-icon">
+                                                    {% sw_icon 'minus' %}
+                                                </span>
+                                            </div>
+                                        {% endblock %}
+                                    </div>
+
+                                {% endblock %}
+
+                                {% block layout_footer_navigation_information_content %}
+                                    <div id="collapseFooter{{ loop.index }}"
+                                         class="footer-column-content collapse js-footer-column-content"
+                                         aria-labelledby="collapseFooterTitle{{ loop.index }}">
+                                        <div class="footer-column-content-inner">
+                                            {% block layout_footer_navigation_information_links %}
+                                                <ul class="list-unstyled">
+
+                                                    {% for treeItem in root.children %}
+
+                                                        {% set category = treeItem.category %}
+                                                        {% set name = category.translated.name %}
+
+                                                         {% set externalLink = category.translated.externalLink %}
+
+                                                        {% if(name == "Cookie-Einstellungen") %}
+                                                            <li class="js-cookie-configuration-button coockie-link-style">
+                                                                <button type="submit" class="btn btn-secondary coockie-link-style-button">
+                                                                    {{ name }}
+                                                                </button>
+                                                            </li>
+                                                        {% else %}
+
+                                                            {% block layout_footer_navigation_information_link_item %}
+                                                                <li class="footer-link-item">
+                                                                    {% block layout_footer_navigation_information_link %}
+                                                                        {% if category.type == 'folder' %}
+                                                                            <div>{{ name }}</div>
+                                                                        {% else %}
+                                                                            <a class="footer-link"
+                                                                               href="{{ category_url(category) }}"
+                                                                               {% if category_linknewtab(category) %}target="_blank"{% endif %}
+                                                                               title="{{ name }}">
+                                                                                {{ name }}
+                                                                            </a>
+                                                                        {% endif %}
+                                                                    {% endblock %}
+                                                                </li>
+                                                            {% endblock %}
+                                                        {% endif %}
+
+                                                    {% endfor %}
+                                                </ul>
+                                            {% endblock %}
+                                        </div>
+                                    </div>
+                                {% endblock %}
+                            </div>
+                        {% endblock %}
+                    {% endfor %}
+
+                {% endblock %}
+
+            </div>
+        {% endblock %}
+
+        {% block layout_footer_payment_shipping_logos %}
+            <div class="footer-logos">
+                {% block layout_footer_payment_logos %}
+                    {% for paymentMethod in page.salesChannelPaymentMethods %}
+                        {% block layout_footer_payment_logo %}
+                            {% if paymentMethod.media %}
+                                <div class="footer-logo is-payment">
+                                    {% sw_thumbnails 'footer-payment-image-thumbnails' with {
+                                        media: paymentMethod.media,
+                                        sizes: {
+                                            'default': '100px'
+                                        },
+                                        attributes: {
+                                            'class': 'img-fluid footer-logo-image',
+                                            'alt': (paymentMethod.media.translated.alt ?: paymentMethod.translated.name),
+                                            'title': (paymentMethod.media.translated.title ?: paymentMethod.translated.name)
+                                        }
+                                    } %}
+                                </div>
+                            {% endif %}
+                        {% endblock %}
+                    {% endfor %}
+                {% endblock %}
+
+                {% block layout_footer_shipping_logos %}
+                    {% for shippingMethod in page.salesChannelShippingMethods %}
+                        {% block layout_footer_shipping_logo %}
+                            {% if shippingMethod.media %}
+                                <div class="footer-logo is-shipping">
+                                    {% sw_thumbnails 'footer-shipping-image-thumbnails' with {
+                                        media: shippingMethod.media,
+                                        sizes: {
+                                            'default': '100px'
+                                        },
+                                        attributes: {
+                                            'class': 'img-fluid footer-logo-image',
+                                            'alt': (shippingMethod.media.translated.alt ?: shippingMethod.translated.name),
+                                            'title': (shippingMethod.media.translated.title ?: shippingMethod.translated.name)
+                                        }
+                                    } %}
+                                </div>
+                            {% endif %}
+                        {% endblock %}
+                    {% endfor %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+    </div>
+
+    {% block layout_footer_bottom %}
+        <div class="footer-bottom">
+            {% block layout_footer_service_menu %}
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            {% block layout_footer_copyright %}
+                                <div class="footer-copyright">
+                                    {#                    {% sw_icon 'shopware' style {'size':'xs'} %}#}
+                                    {{ "footer.copyrightInfo"|trans|sw_sanitize }}
+                                </div>
+                            {% endblock %}
+                            {#{% block layout_footer_service_menu_content %}#}
+                            {#{% apply spaceless %}#}
+                            {#<ul class="footer-service-menu-list list-unstyled">#}
+                            {#{% for serviceMenuItem in page.header.serviceMenu %}#}
+                            {#{% block layout_footer_service_menu_item %}#}
+                            {#<li class="footer-service-menu-item">#}
+                            {#<a class="footer-service-menu-link"#}
+                            {#href="{{ category_url(serviceMenuItem) }}"#}
+                            {#{% if category_linknewtab(serviceMenuItem) %}target="_blank"{% endif %}#}
+                            {#title="{{ serviceMenuItem.translated.name }}">#}
+                            {#{{ serviceMenuItem.translated.name }}#}
+                            {#</a>#}
+                            {#</li>#}
+                            {#{% endblock %}#}
+                            {#{% endfor %}#}
+                            {#</ul>#}
+                            {#{% endapply %}#}
+                            {#{% endblock %}#}
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            {% block layout_footer_vat %}
+                                <div class="footer-vat">
+                                    {% if context.taxState == "gross" %}
+                                        <p>
+                                            {{ "michelis.footer.includeVat"|trans({
+                                                '%url%': path('frontend.cms.page',{ id: config('core.basicInformation.shippingPaymentInfoPage') })
+                                            })|raw }}
+                                        </p>
+                                    {% else %}
+                                        <p>
+                                            {{ "footer.excludeVat"|trans({
+                                                '%url%': path('frontend.cms.page',{ id: config('core.basicInformation.shippingPaymentInfoPage') })
+                                            })|raw }}
+                                        </p>
+                                    {% endif %}
+                                </div>
+                            {% endblock %}
+                        </div>
+                    </div>
+
+                </div>
+            {% endblock %}
+
+
+
+
+        </div>
+    {% endblock %}
+{% endblock %}
+    {#</div>#}

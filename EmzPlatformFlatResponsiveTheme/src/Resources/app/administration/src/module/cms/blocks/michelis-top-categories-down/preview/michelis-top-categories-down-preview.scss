@@ -1,0 +1,58 @@
+.michelis-top-categories-down-preview {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+
+    .row-one, .row-two {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        margin-bottom: 15px;
+    }
+
+    .row-one-big-block {
+        width: 100%;
+    }
+
+    .row-two-big-block {
+        width: 100%;
+    }
+
+    .bigBanner {
+        display: block;
+        min-height: 100px;
+        background: #aaaeb1;
+        margin: 0 2%;
+    }
+
+    .bigBannerSecond {
+        display: block;
+        min-height: 100px;
+        background: #aaaeb1;
+        margin: 0 2%;
+    }
+
+    .bigBlock {
+
+    }
+
+    .bigBlockSecond{
+        position: relative;
+        top: -40px;
+        width: 94%;
+    }
+
+    .banner {
+        display: block;
+        height: 60px;
+        background: #aaaeb1;
+        margin: 0 2%;
+    }
+
+    .block {
+        width: 43%;
+    }
+}

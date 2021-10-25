@@ -1,0 +1,9 @@
+{% block cms_block_michelis_button %}
+    {% set element = block.slots.getSlot('button') %}
+
+    <div class="col-12 cms-block-michelis-button" data-cms-element-id="{{ element.id }}">
+        {% block michelis_button_inner %}
+            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+        {% endblock %}
+    </div>
+{% endblock %}

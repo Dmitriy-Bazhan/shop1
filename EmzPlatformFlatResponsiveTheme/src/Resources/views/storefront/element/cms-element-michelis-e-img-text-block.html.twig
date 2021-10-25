@@ -1,0 +1,86 @@
+{% block cms_element_michelis_e_img_text_block %}
+       {% set translatedConfig = element.translated.config %}
+        {% set config = element.fieldConfig.elements %}
+
+       <div>
+           <div class="cms-element-{{ element.type }}{% if config.verticalAlign.value %} has-vertical-alignment{% endif %}">
+               {% block element_product_slider_alignment %}
+                   {% if config.verticalAlign.value %}
+                       <div class="cms-element-alignment{% if config.verticalAlign.value == "center" %} align-self-center{% elseif config.verticalAlign.value == "flex-end" %} align-self-end{% else %} align-self-start{% endif %}">
+                   {% endif %}
+                   {% block element_image_inner %}
+                       {% set imageElement %}
+                           {% block element_image_container %}
+                               {% if element.data.media.url %}
+                                   <div class="cms-image-container is-{{ element.translated.config.displayMode.value }}"
+                                           {% if element.translated.config.minHeight.value and element.translated.config.displayMode.value == "cover" %} style="min-height: {{ element.translated.config.minHeight.value }};"{% endif %}>
+                                       {% block element_image_media %}
+                                           {% set attributes = {
+                                               'class': 'cms-image',
+                                               'alt': (element.data.media.translated.alt ?: ''),
+                                               'title': (element.data.media.translated.title ?: '')
+                                           } %}
+
+                                           {% if element.translated.config.displayMode.value == 'cover' or element.translated.config.displayMode.value == 'contain' %}
+                                               {% set attributes = attributes|merge({ 'data-object-fit': element.translated.config.displayMode.value }) %}
+                                           {% endif %}
+
+                                           {% sw_thumbnails 'cms-image-thumbnails' with {
+                                               media: element.data.media
+                                           } %}
+                                       {% endblock %}
+                                   </div>
+                               {% endif %}
+                           {% endblock %}
+                       {% endset %}
+
+                       {% if element.translated.config.url.value %}
+                           <a href="{{ element.translated.config.url.value }}"
+                              class="cms-image-link"
+                              {% if element.translated.config.newTab.value %}target="_blank" rel="noopener"{% endif %}>
+                               {{ imageElement }}
+                           </a>
+                       {% else %}
+                           {{ imageElement }}
+                       {% endif %}
+                   {% endblock %}
+                   {% if config.verticalAlign.value %}
+                       </div>
+                   {% endif %}
+               {% endblock %}
+           </div>
+       </div>
+
+    <div class="m-img-text-title">
+       <p>
+           {% if translatedConfig.title.value %}
+               {{ translatedConfig.title.value }}
+           {% endif %}
+       </p>
+    </div>
+
+    <div class="m-img-text-lable">
+        <p>
+            {% if translatedConfig.description.value %}
+                {{ translatedConfig.description.value }}
+            {% endif %}
+        </p>
+    </div>
+
+    <div class="m-img-text-nur">
+        <span>
+            {% if translatedConfig.costFirst.value %}
+                {{ translatedConfig.costFirst.value|raw }}
+            {% endif %}
+        </span>
+    </div>
+
+    <div class="m-img-text-statt">
+        <span>
+            {% if translatedConfig.costSecond.value %}
+                {{ translatedConfig.costSecond.value|raw }}
+            {% endif %}
+        </span>
+    </div>
+
+   {% endblock %}

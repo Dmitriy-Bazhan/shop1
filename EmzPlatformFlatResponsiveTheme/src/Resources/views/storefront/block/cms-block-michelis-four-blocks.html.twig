@@ -1,0 +1,24 @@
+{% block cms_block_michelis_four_blocks %}
+
+    <div class="m-four-block">
+        {% block cms_block_michelis_four_blocks_slotFirst %}
+            {% set element = block.slots.getSlot('slotFirst') %}
+            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+        {% endblock %}
+
+        {% block cms_block_michelis_four_blocks_slotSecond %}
+            {% set element = block.slots.getSlot('slotSecond') %}
+            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+        {% endblock %}
+
+        {% block cms_block_michelis_four_blocks_slotThird %}
+            {% set element = block.slots.getSlot('slotThird') %}
+            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+        {% endblock %}
+
+        {% block cms_block_michelis_four_blocks_slotFourth %}
+            {% set element = block.slots.getSlot('slotFourth') %}
+            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+        {% endblock %}
+    </div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/storefront/page/checkout/checkout-item.html.twig' %}
+
+{% block page_checkout_item_info_label %}
+    {% if lineItem.extensions['onlyRequest'] and lineItem.extensions['onlyRequest']['status'] == true %}
+        <div class="bpa-checkout-only-request">
+            <p style="color: red">{{ "BpaKinshoferVendors.message.orderForKinshofer"|trans|sw_sanitize }}</p>
+        </div>
+    {% endif %}
+
+    {{ parent() }}
+{% endblock %}

@@ -1,0 +1,31 @@
+{
+    "name": "bpa/kinshofer-vendors",
+    "description": "Kinshofer vendors",
+    "version": "1.0.0",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "Bpa\\KinshoferVendors\\": "src/"
+        }
+    },
+    "require": {
+        "shopware/core": "~6.4"
+
+    },
+    "extra": {
+        "shopware-plugin-class": "Bpa\\KinshoferVendors\\BpaKinshoferVendors",
+        "label": {
+            "de-DE": "Kinshofer Fachhändler",
+            "en-GB": "Kinshofer vendors"
+        },
+        "description": {
+            "de-DE": "Stellt Funktionalitäten in Verbindung mit den Kinshofer-Fachhändlern bereit und erweitert die Funktionalität des StoreLocator-Plugins der Firma NetInvestors GmbH.",
+            "en-GB": "Provides functionalities in connection with the Kinshofer specialist dealers and extends the functionality of the StoreLocator plug-in of the company NetInvestors GmbH."
+        },
+        "manufacturerLink": {
+            "de-DE": "https://www.blackpoint.de/",
+            "en-GB": "https://www.blackpoint.de/"
+        }
+    }
+}

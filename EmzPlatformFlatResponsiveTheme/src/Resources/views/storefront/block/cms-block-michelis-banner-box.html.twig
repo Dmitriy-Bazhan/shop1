@@ -1,0 +1,9 @@
+{% block michelis_banner_box %}
+    {% set element = block.slots.getSlot('banners') %}
+    
+    <div class="col-12">
+        {% block michelis_banner_box_banners %}
+            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+        {% endblock %}
+    </div>
+{% endblock %}

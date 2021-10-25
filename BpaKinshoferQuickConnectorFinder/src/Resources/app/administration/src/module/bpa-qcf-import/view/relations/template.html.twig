@@ -1,0 +1,75 @@
+{% block bpa_qcf_view_relations %}
+    <sw-page class="bpa-qcf-view-relations">
+        <template #smart-bar-header>
+            <h2>
+                {% block bpa_qcf_view_relations_smart_bar_header_title_text %}
+                    {{ $tc('bpa-qcf-import.common.relationsTitle') }}
+                {% endblock %}
+
+                {% block bpa_qcf_view_relations_smart_bar_header_amount %}
+                    <span v-if="!isLoading" class="sw-page__smart-bar-amount">
+                        ({{ total }})
+                    </span>
+                {% endblock %}
+            </h2>
+        </template>
+
+        <template #content>
+            {% block bpa_qcf_view_relations_content %}
+                <sw-entity-listing
+                    v-if="itemsCollection"
+                    :items="itemsCollection"
+                    :repository="repository"
+                    :showSelection="false"
+                    :columns="columns">
+
+                    {% block sw_product_list_grid_columns %}
+                        {% block sw_product_list_grid_columns_productNumber %}
+                            <template slot="column-productNumber" slot-scope="{ item }">
+                                {% block sw_product_list_grid_columns_productNumber_link %}
+                                    <router-link :to="{ name: 'sw.product.detail', params: { id: item.productId } }">
+                                        {{ item.productNumber }}
+                                    </router-link>
+                                {% endblock %}
+                            </template>
+                        {% endblock %}
+
+                        {% block sw_product_list_grid_columns_loadHook %}
+                            <template slot="column-loadHook" slot-scope="{ item }">
+                                {% block sw_product_list_grid_columns_loadHook_content %}
+                                    <sw-icon v-if="item.loadHook" name="small-default-checkmark-line-medium" small class="is--active"></sw-icon>
+                                    <sw-icon v-else name="small-default-x-line-medium" small class="is--inactive"></sw-icon>
+                                {% endblock %}
+                            </template>
+                        {% endblock %}
+
+                        {% block sw_product_list_grid_columns_basicSet %}
+                            <template slot="column-basicSet" slot-scope="{ item }">
+                                {% block sw_product_list_grid_columns_basicSet_link %}
+                                    <router-link :to="{ name: 'sw.product.detail', params: { id: item.basicSetProductId } }">
+                                        {{ item.basicSet }}
+                                    </router-link>
+                                {% endblock %}
+                            </template>
+                        {% endblock %}
+
+                        {% block sw_product_list_grid_columns_safetySet %}
+                            <template slot="column-safetySet" slot-scope="{ item }">
+                                {% block sw_product_list_grid_columns_safetySet_link %}
+                                    <router-link :to="{ name: 'sw.product.detail', params: { id: item.safetySetProductId } }">
+                                        {{ item.safetySet }}
+                                    </router-link>
+                                {% endblock %}
+                            </template>
+                        {% endblock %}
+                    {% endblock %}
+
+                </sw-entity-listing>
+            {% endblock %}
+
+            {% block bpa_qcf_view_relations_empty_state %}
+                <sw-empty-state v-if="!isLoading && !total" :title="$tc('bpa-qcf-import.common.messageEmpty')"></sw-empty-state>
+            {% endblock %}
+        </template>
+    </sw-page>
+{% endblock %}

@@ -1,0 +1,21 @@
+@import "~scss/variables";
+
+.sw-cms-michelis-e-img-text-block-component {
+  height: 100%;
+  position: relative;
+  width: 100%;
+  word-break: break-word;
+
+  .michelis-e-img-text-block-title h6 {
+    font-size: 32px;
+  }
+  .michelis-e-img-text-block-description h6{
+    font-size: 28px;
+  }
+  .michelis-e-img-text-block-costFirst h6 {
+    font-size: 28px;
+  }
+  .michelis-e-img-text-block-costSecond h6 {
+    font-size: 28px;
+  }
+}

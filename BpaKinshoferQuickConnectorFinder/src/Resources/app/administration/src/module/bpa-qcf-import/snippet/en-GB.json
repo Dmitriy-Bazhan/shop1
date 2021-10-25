@@ -1,0 +1,38 @@
+{
+    "global": {
+        "entities": {
+            "bpa_qcf_excavator": "Excavator | Excavators"
+        }
+    },
+    "bpa-qcf-import": {
+        "searchSnippet": "Excavators...",
+        "common": {
+            "mainMenuItemGeneral": "Excavators & quick-connectors",
+            "descriptionTextModule": "Manage excavators and quick connectors",
+            "importListTitle": "Import",
+            "listTitle": "List excavators",
+            "relationsTitle": "List quick-connectors",
+            "startImport": "Start import",
+            "messageEmpty": "Nothing found"
+        },
+        "labels": {
+            "uploadCsvLabel": "Upload EGgroup-Baggerhersteller-Baggertyp.csv",
+            "uploadCsvLabelGroupProduct": "Upload Schnellwechelser-EGg-Art.Nr.csv",
+            "labelUploadCaption": "Select a file to upload",
+            "titleImportSuccess": "Success",
+            "messageImportSuccess": "The import was completed successfully.",
+            "titleImportError": "Error",
+            "errorNotificationTitle": "Import error"
+        },
+        "columns": {
+            "type": "Type",
+            "manufacturer": "Manufacturer",
+            "group": "Group",
+            "productNumber": "Product number",
+            "quickCoupler": "Quick coupler",
+            "loadHook": "Load hook",
+            "basicSet": "Installation set Basic",
+            "safetySet": "Installation set Safety"
+        }
+    }
+}

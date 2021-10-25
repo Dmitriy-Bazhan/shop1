@@ -1,0 +1,36 @@
+{% sw_extends '@Storefront/storefront/page/checkout/cart/index.html.twig' %}
+
+{# setting variables #}
+{% set customerGroupId = context.currentCustomerGroup.id %}
+{% set currentSalesChannel = context.salesChannelId %}
+
+{% set onlyRequestStatusCart = page.cart.extensions['onlyRequest'] %}
+{% set standartCustomer = config('BpaKinshoferVendors.config.customerGroupStandart') %}
+{% set dealers = config('BpaKinshoferVendors.config.customerGroupDealers') %}
+
+{% block page_checkout_cart_action_proceed %}
+    {% if  page.extensions.salesChannel %}
+        {% set TOGOchannel = page.extensions.salesChannel['To Go'] %}
+        {% set SparePartsChannel = page.extensions.salesChannel['Zapchasti'] %}
+        {% set SparePartsChannel1 = page.extensions.salesChannel['Spare parts'] %}
+    {% endif %}
+
+    {% if not onlyRequestStatusCart and (currentSalesChannel == SparePartsChannel or customerGroupId in dealers)%}
+        <div class="checkout-aside-action">
+            <a href="{{ path('frontend.checkout.confirm.page') }}"
+               class="btn btn-primary btn-block btn-lg begin-checkout-btn"
+               title="{{ "checkout.proceedLink"|trans|striptags }}">
+                {{ "checkout.proceedLink"|trans|sw_sanitize }}
+            </a>
+        </div>
+    {% endif %}
+
+    <div class="checkout-aside-action">
+        <a href="{{ path('frontend.checkout.confirm.page') }}"
+           class="btn btn-primary btn-block btn-lg begin-checkout-btn"
+           title="{{ "BpaKinshoferVendors.button.requestDealer"|trans|sw_sanitize }}">
+            {{ "BpaKinshoferVendors.button.requestDealer"|trans|sw_sanitize }}
+        </a>
+    </div>
+
+{% endblock %}

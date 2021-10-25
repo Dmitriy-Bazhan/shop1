@@ -1,0 +1,23 @@
+{% block michelis_e_button_config %}
+    <div class="michelis-e-button-config">
+        <sw-field v-model="element.config.url.value"
+                  class="michelis-e-button-config-url"
+                  type="text"
+                  :label="$tc('michelis.cms.elements.michelis-e-button.labels.url')"
+                  :placeholder="$tc('michelis.cms.elements.michelis-e-button.placeholders.url')">
+        </sw-field>
+
+        <sw-field v-model="element.config.btnLabel.value"
+                  class="michelis-e-button-config-btnlabel"
+                  type="text"
+                  :label="$tc('michelis.cms.elements.michelis-e-button.labels.btnLabel')"
+                  :placeholder="$tc('michelis.cms.elements.michelis-e-button.placeholders.btnLabel')">
+        </sw-field>
+
+        <sw-field v-model="element.config.newTab.value"
+                  class="michelis-e-button-config-newtab"
+                  type="switch"
+                  :label="$tc('michelis.cms.elements.michelis-e-button.labels.linkNewTab')">
+        </sw-field>
+    </div>
+{% endblock %}

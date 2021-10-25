@@ -1,0 +1,14 @@
+@import 'layout/_top-bar';
+@import '_style';
+@import 'layout/_landingpagefirst';
+
+@font-face {
+    font-family: "calibri";
+    font-weight: 400;
+    src: url('../assets/fonts/calibri.ttf') format('truetype');
+}
+@font-face {
+    font-family: "calibrib";
+    font-weight: 600;
+    src: url('../assets/fonts/calibrib.ttf') format('truetype');
+}

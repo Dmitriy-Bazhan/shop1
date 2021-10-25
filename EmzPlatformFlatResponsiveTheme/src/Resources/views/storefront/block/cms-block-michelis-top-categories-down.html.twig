@@ -1,0 +1,26 @@
+{% block michelis_e_top_categories_down_block %}
+
+    <section class="michelis-top-categories">
+        <div class="michelis-wrapper">
+
+            <div class="michelis-top-categories-item-rows">
+                {% block cms_block_michelis_top_categories_topCategoriesFirst %}
+                    {% set element = block.slots.getSlot('topCategoriesFirst') %}
+
+                    <div class="m-oneblock">
+                        {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                    </div>
+                {% endblock %}
+
+                {% block cms_block_michelis_top_categories_topCategoriesSecond %}
+                    {% set element = block.slots.getSlot('topCategoriesSecond') %}
+
+                    <div class="m-twoblock">
+                        {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                    </div>
+                {% endblock %}
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

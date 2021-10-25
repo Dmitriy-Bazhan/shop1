@@ -1,0 +1,10 @@
+{% block sw_cms_block_michelis_img_button %}
+    <div class="sw-cms-block-michelis-img-button">
+        <slot name="imageSlot">
+            {% block sw_cms_block_michelis_img_button_slot_left %}{% endblock %}
+        </slot>
+        <slot name="button">
+            {% block sw_cms_block_michelis_img_button_slot_right %}{% endblock %}
+        </slot>
+    </div>
+{% endblock %}

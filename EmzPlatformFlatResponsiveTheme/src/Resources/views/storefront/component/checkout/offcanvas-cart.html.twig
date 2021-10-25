@@ -1,0 +1,12 @@
+{% sw_extends '@Storefront/storefront/component/checkout/offcanvas-cart.html.twig' %}
+
+{% block component_offcanvas_cart_actions_promotion_submit %}
+    <div class="input-group-append">
+        <button class="btn btn-secondary"
+                type="submit"
+                id="addPromotionOffcanvasCart">
+            {#                                                            {% sw_icon 'checkmark' %}#}
+            <img src="/bundles/emzplatformflatresponsivetheme/assets/img/angle-down.png" class="arrow_btn">
+        </button>
+    </div>
+{% endblock %}

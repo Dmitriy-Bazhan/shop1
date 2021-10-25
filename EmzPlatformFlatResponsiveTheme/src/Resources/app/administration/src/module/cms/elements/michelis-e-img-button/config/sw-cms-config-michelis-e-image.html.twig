@@ -1,0 +1,61 @@
+{% block sw_cms_config_michelis_e_image %}
+    <div class="sw-cms-config-michelis-e-image">
+        {% block sw_cms_config_michelis_e_image_media_upload %}
+            <sw-cms-mapping-field
+                    v-model="element.config.media"
+                    :label="$tc('sw-cms.elements.image.label')"
+                    value-types="entity"
+                    entity="media"
+            >
+                <sw-media-upload-v2
+                        variant="regular"
+                        :upload-tag="uploadTag"
+                        :source="previewSource"
+                        :allow-multi-select="false"
+                        :default-folder="cmsPageState.pageEntityName"
+                        :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                        @media-upload-sidebar-open="onOpenMediaModal"
+                        @media-upload-remove-image="onImageRemove"
+                />
+
+                <div
+                        slot="preview"
+                        slot-scope="{ demoValue }"
+                        class="sw-cms-config-michelis-e-image__mapping-preview"
+                >
+                    <img
+                            v-if="demoValue.url"
+                            :src="demoValue.url"
+                    >
+                    <sw-alert
+                            v-else
+                            class="sw-cms-config-michelis-e-image__preview-info"
+                            variant="info"
+                    >
+                        {{ $tc('sw-cms.detail.label.mappingEmptyPreview') }}
+                    </sw-alert>
+                </div>
+            </sw-cms-mapping-field>
+
+            <sw-upload-listener
+                    :upload-tag="uploadTag"
+                    auto-upload
+                    @media-upload-finish="onImageUpload"
+            />
+        {% endblock %}
+
+        {% block sw_cms_config_michelis_e_image_media_modal %}
+            <sw-media-modal-v2
+                    v-if="mediaModalIsOpen"
+                    variant="regular"
+                    :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                    :entity-context="cmsPageState.entityName"
+                    :allow-multi-select="false"
+                    :initial-folder-id="cmsPageState.defaultMediaFolderId"
+                    @media-upload-remove-image="onImageRemove"
+                    @media-modal-selection-change="onSelectionChanges"
+                    @modal-close="onCloseModal"
+            />
+        {% endblock %}
+    </div>
+{% endblock %}

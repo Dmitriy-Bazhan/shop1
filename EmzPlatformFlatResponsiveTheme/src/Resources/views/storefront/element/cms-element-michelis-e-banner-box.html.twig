@@ -1,0 +1,31 @@
+{% block cms_element_michelis_e_banner_box %}
+    {% set translatedConfig = element.translated.config %}
+    {% set bannersItems = translatedConfig.banners.value %}
+    
+    <section class="michelis-baner-box-category">
+            <div class="michelis-banner-box-container">
+                <div class="row michelis-category-list">
+                    {% if bannersItems|length > 0 %}
+                        {% for banner in bannersItems %}
+                            {% set link = banner.url ?? 'javascript:void(0)' %}
+                            {% set showBtn = banner.url ? true : false %}
+
+                            <div class="col-md-4 michelis-category-list__item">
+                                <div class="michelis-category-list__link" {% if banner.mediaUrl %}style="background-image: url('{{ banner.mediaUrl }}')"{% endif %}>
+                                    <div class="m-position">
+                                    <div class="michelis-category-list__title">{{ banner.title }}</div>
+                                        <div class="michelis-category-list__description">{{ banner.description }}</div>
+                                    {% if showBtn %}
+                                        <div class="m-middle-btn">
+                                            <a href="{{ link }}" class="michelis-btn">{{ banner.btnName }} {% if translatedConfig.newTab.value %}target="_blank"{% endif %}</a>
+                                        </div>
+                                    {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+    </section>
+{% endblock %}

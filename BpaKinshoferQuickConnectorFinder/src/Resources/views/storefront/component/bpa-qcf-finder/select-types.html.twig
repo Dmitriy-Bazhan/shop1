@@ -1,0 +1,7 @@
+<option selected="selected" disabled="disabled" value="">{{ "bpa-quick-connector-finder.filters.excavatorType"|trans }}</option>
+
+{% if bpaTypes %}
+    {% for bpaType in bpaTypes %}
+        <option value="{{ bpaType.id }}">{{ bpaType.type }}</option>
+    {% endfor %}
+{% endif %}

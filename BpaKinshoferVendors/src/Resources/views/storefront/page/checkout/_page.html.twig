@@ -1,0 +1,75 @@
+{% sw_extends '@Storefront/storefront/page/checkout/_page.html.twig' %}
+
+{# setting variables #}
+{% set customerGroupId = context.currentCustomerGroup.id %}
+{% set currentSalesChannel = context.salesChannelId %}
+
+{% set checkoutCustomerGroupDisabled = config('BpaKinshoferVendors.config.customerGroupDisabled') %}
+{% set checkoutCustomerGroupDisabledKinshofer = config('BpaKinshoferVendors.config.customerGroupDisabledKinshofer') %}
+
+{% set standartCustomer = config('BpaKinshoferVendors.config.customerGroupStandart') %}
+{% set dealers = config('BpaKinshoferVendors.config.customerGroupDealers') %}
+{% set onlyRequestStatus = page.cart.extensions['onlyRequest'] %}
+
+{% block base_flashbags_checkout %}
+
+ <div class="flashbags">
+     {% if onlyRequestStatus and onlyRequestStatus['status'] == true %}
+         {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+             type: "warning",
+             content: 'BpaKinshoferVendors.message.onlyRequestProduct'|trans|sw_sanitize
+         } %}
+     {% endif %}
+
+     {% if  page.extensions.salesChannel %}
+         {% set TOGOchannel = page.extensions.salesChannel['To Go'] %}
+         {% set SparePartsChannel = page.extensions.salesChannel['Zapchasti'] %}
+         {% set SparePartsChannel1 = page.extensions.salesChannel['Spare parts'] %}
+     {% endif %}
+
+     {% if currentSalesChannel == TOGOchannel or currentSalesChannel == 'a6a2b3ba9e9e4c79b40a0fe6c411b040' %}
+         {{ dump('goto') }}
+
+         {% if customerGroupId in dealers %}
+             <div class="flashbags">
+                 {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                     type: "warning",
+                     content: 'BpaKinshoferVendors.message.orderForKinshofer'|trans|sw_sanitize
+                 } %}
+             </div>
+             {{ dump(customerGroupId) }}
+         {% elseif customerGroupId in standartCustomer %}
+             <div class="flashbags">
+                 {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                     type: "warning",
+                     content: 'BpaKinshoferVendors.message.orderOnlyDealerMessage'|trans|sw_sanitize
+                 } %}
+             </div>
+         {% endif %}
+     {% endif %}
+
+     {% if currentSalesChannel == SparePartsChannel %}
+         {{ dump('zapchasti') }}
+
+         {% if customerGroupId in standartCustomer %}
+             <div class="flashbags">
+                 {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                     type: "warning",
+                     content: 'BpaKinshoferVendors.message.orderOnlyDealerMessage'|trans|sw_sanitize
+                 } %}
+             </div>
+         {% endif %}
+
+         {% if customerGroupId in dealers %}
+             <div class="flashbags">
+                 {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                     type: "warning",
+                     content: 'BpaKinshoferVendors.message.orderForKinshofer'|trans|sw_sanitize
+                 } %}
+             </div>
+         {% endif %}
+     {% endif %}
+
+    {{ parent() }}
+ </div>
+{% endblock %}

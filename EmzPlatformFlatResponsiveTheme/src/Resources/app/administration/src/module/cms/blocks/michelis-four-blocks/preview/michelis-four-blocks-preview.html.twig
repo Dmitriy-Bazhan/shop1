@@ -1,0 +1,9 @@
+{% block michelis_four_blocks_preview %}
+    <div class="michelis-four-blocks-preview">
+        <div class="michelis-four-blocks-preview-feeds">
+            <div v-for="i in 4" class="michelis-four-blocks-preview-feed">
+                <img :src="'/administration/static/img/cms/preview_mountain_small.jpg' | asset">
+            </div>
+        </div>
+    </div>
+{% endblock %}

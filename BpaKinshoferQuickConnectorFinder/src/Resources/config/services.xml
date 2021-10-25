@@ -1,0 +1,84 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!-- Definitions -->
+        <service id="Bpa\KinshoferQuickConnectorFinder\Core\QuickConnectorFinder\Manufacturer\BpaQcfManufacturerDefinition">
+            <tag name="shopware.entity.definition" entity="bpa_qcf_manufacturer" />
+        </service>
+
+        <service id="Bpa\KinshoferQuickConnectorFinder\Core\QuickConnectorFinder\Group\BpaQcfGroupDefinition">
+            <tag name="shopware.entity.definition" entity="bpa_qcf_group" />
+        </service>
+
+        <service id="Bpa\KinshoferQuickConnectorFinder\Core\QuickConnectorFinder\BpaQcfExcavatorDefinition">
+            <tag name="shopware.entity.definition" entity="bpa_qcf_excavator" />
+            <tag name="shopware.composite_search.definition"  priority="200"/>
+        </service>
+
+        <service id="Bpa\KinshoferQuickConnectorFinder\Core\QuickConnectorFinder\BpaQcfGroupProductDefinition">
+            <tag name="shopware.entity.definition" entity="bpa_qcf_group_product" />
+        </service>
+
+        <!-- Extensions -->
+        <service id="Bpa\KinshoferQuickConnectorFinder\Core\QuickConnectorFinder\Aggregate\ExcavatorProductExtension">
+            <tag name="shopware.entity.extension"/>
+        </service>
+
+        <!-- Resolvers -->
+        <service id="Bpa\KinshoferQuickConnectorFinder\Core\Content\Cms\BpaQcfFormResolver">
+            <argument type="service" id="bpa_qcf_manufacturer.repository"/>
+            <tag name="shopware.cms.data_resolver" />
+        </service>
+
+        <!-- Services -->
+        <service id="bpa_qcf_import.service" class="Bpa\KinshoferQuickConnectorFinder\Service\ImportService" public="true">
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="bpa_qcf_group.repository"/>
+            <argument type="service" id="bpa_qcf_manufacturer.repository"/>
+            <argument type="service" id="bpa_qcf_excavator.repository"/>
+            <argument type="service" id="bpa_qcf_group_product.repository"/>
+        </service>
+
+        <service id="bpa_qcf_finder.service" class="Bpa\KinshoferQuickConnectorFinder\Service\FinderService" public="true">
+            <argument type="service" id="bpa_qcf_excavator.repository"/>
+        </service>
+
+        <!-- Page Loaders -->
+        <service id="Bpa\KinshoferQuickConnectorFinder\Page\Finder\FinderPageLoader" public="true">
+            <argument type="service" id="Shopware\Storefront\Page\GenericPageLoader"/>
+            <argument type="service" id="Shopware\Core\Content\Product\SalesChannel\Listing\ProductListingRoute"/>
+            <argument type="service" id="translator"/>
+        </service>
+
+        <!-- Subscribers -->
+        <service id="Bpa\KinshoferQuickConnectorFinder\Subscriber\ListingFilterSubscriber">
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="Bpa\KinshoferQuickConnectorFinder\Subscriber\ProductPageSubscriber">
+            <argument type="service" id="service_container"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <!-- Controllers -->
+        <service id="Bpa\KinshoferQuickConnectorFinder\Controller\Api\BpaQcfImportController" public="true">
+            <argument type="service" id="bpa_qcf_import.service"/>
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="Bpa\KinshoferQuickConnectorFinder\Controller\FinderController" public="true">
+            <argument type="service" id="Bpa\KinshoferQuickConnectorFinder\Page\Finder\FinderPageLoader" />
+            <argument type="service" id="Shopware\Core\Content\Product\SalesChannel\Listing\ProductListingRoute"/>
+            <argument type="service" id="bpa_qcf_finder.service"/>
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+    </services>
+</container>

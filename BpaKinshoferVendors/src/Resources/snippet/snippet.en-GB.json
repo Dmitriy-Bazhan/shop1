@@ -1,0 +1,17 @@
+{
+    "BpaKinshoferVendors": {
+        "message": {
+            "orderOnlyDealerMessage": "You can ask the dealer",
+            "orderForKinshofer": "You can make an inquiry to Kinshofer",
+            "onlyRequestProduct": "Your shopping cart contains items that are only available on request. To place an order, remove them from the basket.",
+            "onlyRequestProductFlag": "On request only"
+        },
+        "button": {
+            "changeDealer": "Change Dealer",
+            "requestDealer": "Request Dealer"
+        },
+        "label": {
+            "dealerAddress": "Address dealer"
+        }
+    }
+}

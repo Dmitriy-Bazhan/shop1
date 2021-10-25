@@ -1,0 +1,139 @@
+{% sw_extends '@Storefront/storefront/layout/navigation/flyout.html.twig' %}
+
+{% block layout_navigation_flyout %}
+    {% set category = navigationTree.category %}
+    {% set name = category.translated.name %}
+    {% block layout_navigation_flyout_bar %}
+        <div class="row navigation-flyout-bar m-catbar">
+            {% block layout_navigation_flyout_bar_category %}
+                <div class="col m-col">
+                    <div class="navigation-flyout-category-link m-toplink">
+                        {% block layout_navigation_flyout_bar_category_link %}
+                            {% if category.type == 'page' %}
+                                <a class="nav-link"
+                                   href="{{ seoUrl('frontend.navigation.page', { navigationId: category.id }) }}"
+                                   itemprop="url"
+                                   title="{{ name }}">
+                                    {% block layout_navigation_flyout_bar_category_link_text %}
+                                        {{ "general.toCategory"|trans|sw_sanitize }} {{ name }}
+{#                                        {% sw_icon 'arrow-right' style {#}
+{#                                            'color': 'primary',#}
+{#                                            'pack':'solid'#}
+{#                                        } %}#}
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24"><defs><path id="icons-default-arrow-head-right-a" d="M11.5,7.91421356 L21.7928932,18.2071068 C22.1834175,18.5976311 22.8165825,18.5976311 23.2071068,18.2071068 C23.5976311,17.8165825 23.5976311,17.1834175 23.2071068,16.7928932 L12.2071068,5.79289322 C11.8165825,5.40236893 11.1834175,5.40236893 10.7928932,5.79289322 L-0.207106781,16.7928932 C-0.597631073,17.1834175 -0.597631073,17.8165825 -0.207106781,18.2071068 C0.183417511,18.5976311 0.816582489,18.5976311 1.20710678,18.2071068 L11.5,7.91421356 Z"></path></defs><use fill="#78ad10" fill-rule="evenodd" transform="rotate(90 11.5 12)" xlink:href="#icons-default-arrow-head-right-a"></use></svg>
+                                    {% endblock %}
+                                </a>
+                            {% endif %}
+                        {% endblock %}
+                    </div>
+                </div>
+            {% endblock %}
+
+            {% block layout_navigation_flyout_bar_close %}
+                <div class="col-auto m-colauto">
+                    <div class="navigation-flyout-close js-close-flyout-menu m-flyout-icon">
+                        {% block layout_navigation_flyout_bar_close_content %}
+                            {% block layout_utilities_offcanvas_close_icon %}
+{#                                {% sw_icon 'x' %}#}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="#78ad10" fill-rule="evenodd" d="M7,7 L7,3.83333333 C7,3.37309604 7.44771525,3 8,3 C8.55228475,3 9,3.37309604 9,3.83333333 L9,7 L12.1666667,7 C12.626904,7 13,7.44771525 13,8 C13,8.55228475 12.626904,9 12.1666667,9 L9,9 L9,12.1666667 C9,12.626904 8.55228475,13 8,13 C7.44771525,13 7,12.626904 7,12.1666667 L7,9 L3.83333333,9 C3.37309604,9 3,8.55228475 3,8 C3,7.44771525 3.37309604,7 3.83333333,7 L7,7 Z" transform="rotate(45 8 8)"></path></svg>
+                            {% endblock %}
+                        {% endblock %}
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+    {% endblock %}
+
+
+
+    {% block layout_navigation_flyout_content %}
+        <div class="row navigation-flyout-content">
+            {% block layout_navigation_flyout_categories %}
+                <div class="m-nav-cont">
+{#                    {% if category.media %}col-8 col-xl-9{% else %}col{% endif %}#}
+                    <div class="col-8">
+                    <div class="navigation-flyout-categories">
+
+                        {% block layout_navigation_flyout_categories_recoursion %}
+                            {% sw_include '@Storefront/storefront/layout/navigation/categories.html.twig' with {
+                                navigationTree: navigationTree.children,
+                                navigationMedia: category.media,
+                                page: page
+                            } only %}
+                        {% endblock %}
+                    </div>
+
+                    </div>
+                    <div class="col-4">
+
+                        <div class="navigation-flyout-teaser">
+{#                            <a class="navigation-flyout-teaser-image-container" href="{{ category_url(category) }}" title="Tools &amp; Grocery">#}
+
+{#                                <img src="http://upsell.local/media/95/7d/23/1627465264/b6623797513e97e29cb45bd3faa10f8d.jpg" srcset="http://upsell.local/thumbnail/95/7d/23/1627465264/b6623797513e97e29cb45bd3faa10f8d_1920x1920.jpg 1920w, http://upsell.local/thumbnail/95/7d/23/1627465264/b6623797513e97e29cb45bd3faa10f8d_800x800.jpg 800w, http://upsell.local/thumbnail/95/7d/23/1627465264/b6623797513e97e29cb45bd3faa10f8d_400x400.jpg 400w" sizes="310px" class="navigation-flyout-teaser-image" title="File #110: /tmp/b6623797513e97e29cb45bd3faa10f8d.jpg" data-object-fit="cover">#}
+{#                            </a>#}
+                            {% if category.media %}
+                                {% block layout_navigation_flyout_teaser_image2 %}
+                                    <a class="navigation-flyout-teaser-image-container"
+                                       href="{{ category_url(category) }}"
+                                       {% if category_linknewtab(category) %}target="_blank"{% endif %}
+                                       title="{{ name }}">
+                                        {% sw_thumbnails 'navigation-flyout-teaser-image-thumbnails' with {
+                                            media: category.media,
+                                            sizes: {
+                                                'default': '310px'
+                                            },
+                                            attributes: {
+                                                'class': 'navigation-flyout-teaser-image',
+                                                'alt': (category.media.translated.alt ?: ''),
+                                                'title': (category.media.translated.title ?: ''),
+                                                'data-object-fit': 'cover'
+                                            }
+                                        } %}
+                                    </a>
+                                {% endblock %}
+                            {% endif %}
+
+                        </div>
+                        <div class="m-category-title">
+                            {% if category.translated.description %}
+                                 {{ category.translated.description|raw}}
+                            {% endif %}
+                        </div>
+                    </div>
+
+
+                </div>
+            {% endblock %}
+
+{#            {% block layout_navigation_flyout_teaser %}#}
+{#                {% if category.media %}#}
+{#                    <div class="col-6 col-xl-3">#}
+{#                        <div class="navigation-flyout-teaser">#}
+{#                            {% block layout_navigation_flyout_teaser_image %}#}
+{#                                <a class="navigation-flyout-teaser-image-container"#}
+{#                                   href="{{ category_url(category) }}"#}
+{#                                   {% if category_linknewtab(category) %}target="_blank"{% endif %}#}
+{#                                   title="{{ name }}">#}
+{#                                    {% sw_thumbnails 'navigation-flyout-teaser-image-thumbnails' with {#}
+{#                                        media: category.media,#}
+{#                                        sizes: {#}
+{#                                            'default': '310px'#}
+{#                                        },#}
+{#                                        attributes: {#}
+{#                                            'class': 'navigation-flyout-teaser-image',#}
+{#                                            'alt': (category.media.translated.alt ?: ''),#}
+{#                                            'title': (category.media.translated.title ?: ''),#}
+{#                                            'data-object-fit': 'cover'#}
+{#                                        }#}
+{#                                    } %}#}
+{#                                </a>#}
+{#                            {% endblock %}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                {% endif %}#}
+{#            {% endblock %}#}
+        </div>
+
+    {% endblock %}
+
+{% endblock %}

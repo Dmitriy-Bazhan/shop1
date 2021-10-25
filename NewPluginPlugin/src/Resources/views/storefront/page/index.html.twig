@@ -1,0 +1,33 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_content %}
+    <button class="new-plugin-js-test">Test</button>
+
+    {% for product in productData %}
+
+            <p></p>
+            <a href="{{ seoUrl('newplugin.showProduct', { id: product.id }) }}">{{ product.name }}</a>
+
+
+    {% endfor %}
+
+    <form action="{{ url('newplugin.checkForm') }}" method="POST">
+
+        {{ sw_csrf('newplugin.checkForm') }}
+        <input type="text" name="text">
+        <input type="submit" value="Send">
+
+    </form>
+
+    {% block cms_content %}
+        <div>
+            <h1>AJAX Example</h1>
+            <div data-ajax-helper>
+                <div id="ajax-display"></div>
+                <button id="ajax-button">Button</button>
+            </div>
+        </div>
+    {% endblock %}
+
+{% endblock %}
+

@@ -1,0 +1,11 @@
+@import "~scss/variables";
+
+.sw-cms-michelis-e-image {
+  display: grid;
+  max-width: 100%;
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+}

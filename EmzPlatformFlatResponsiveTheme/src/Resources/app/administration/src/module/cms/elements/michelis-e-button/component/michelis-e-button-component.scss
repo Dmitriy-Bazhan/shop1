@@ -1,0 +1,19 @@
+.michelis-e-button-component {
+  position: relative;
+  width: 100%;
+  min-height: 50px;
+  padding: 15px;
+
+  &-button {
+    min-width: 70px;
+    min-height: 35px;
+    border-radius: 5px;
+    border: 1px solid #9c9c9c;
+    text-align: center;
+    line-height: 30px;
+    padding: 5px 20px;
+    background-color: #acd443;
+    display: block;
+    margin: 0 auto;
+  }
+}

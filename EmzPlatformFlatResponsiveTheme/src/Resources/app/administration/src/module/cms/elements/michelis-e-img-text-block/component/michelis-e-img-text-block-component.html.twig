@@ -1,0 +1,25 @@
+4{% block sw_cms_michelis_e_img_text_block_component %}
+    <div class="sw-cms-michelis-e-img-text-block-component">
+
+        <div class="michelis-e-img-text-block-title">
+            <h6 v-if="element.config.title.value">{{ element.config.title.value }}</h6>
+            <h6 v-else>{{ $tc('michelis.cms.elements.michelis-e-img-text-block.title') }}</h6>
+        </div>
+
+        <div class="michelis-e-img-text-block-description">
+            <h6 v-if="element.config.description.value">{{ element.config.description.value }}</h6>
+            <h6 v-else>{{ $tc('michelis.cms.elements.michelis-e-img-text-block.description') }}</h6>
+        </div>
+
+        <div class="michelis-e-img-text-block-costFirst">
+            <h6 v-if="element.config.costFirst.value">{{ element.config.costFirst.value }}</h6>
+            <h6 v-else>{{ $tc('michelis.cms.elements.michelis-e-img-text-block.costFirst') }}</h6>
+        </div>
+
+        <div class="michelis-e-img-text-block-costSecond">
+            <h6 v-if="element.config.costSecond.value">{{ element.config.costSecond.value }}</h6>
+            <h6 v-else>{{ $tc('michelis.cms.elements.michelis-e-img-text-block.costSecond') }}</h6>
+        </div>
+
+    </div>
+{% endblock %}

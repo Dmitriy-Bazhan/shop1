@@ -1,0 +1,19 @@
+{
+    "bpa-quick-connector-finder": {
+        "filters": {
+            "excavatorType": "Excavator type",
+            "excavatorManufacturer": "Excavator manufacturer"
+        },
+        "finderPageTitle": "Quick-Connector Finder",
+        "finderForm": {
+            "title": "Quick-Connector Finder Form",
+            "submit": "Find quick connector",
+            "message": "<a data-toggle=\"modal\" data-url=\"%url%\" href=\"%url%\">Can't find the excavator you need?</a>"
+        },
+        "accessoriesProduct": {
+            "setProductTabName": "Set product",
+            "basicTypeLabelTab": "Product Basic set",
+            "safetyTypeLabelTab": "Product safety set"
+        }
+    }
+}

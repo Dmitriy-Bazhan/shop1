@@ -1,0 +1,24 @@
+.sw-cms-block-michelis-top-categories-down-component {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  flex-direction: column;
+
+  .sw-cms-block-michelis-top-categories-down-slots {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    justify-content: space-evenly;
+    width: 100%;
+
+    .sw-cms-block-michelis-top-categories-down-first,
+    .sw-cms-block-michelis-top-categories-down-second{
+      position: relative;
+      display: block;
+      padding: 5px;
+      max-width: 25%;
+      overflow: hidden;
+    }
+  }
+}

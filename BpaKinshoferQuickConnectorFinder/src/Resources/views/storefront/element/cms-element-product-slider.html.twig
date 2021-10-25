@@ -1,0 +1,17 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-product-slider.html.twig' %}
+
+ {% block element_product_slider_inner_item %}
+     <div class="product-slider-item">
+
+         {% if product.extensions.typeProduct.setProduct == 'basic' %}
+             {{ "bpa-quick-connector-finder.accessoriesProduct.basicTypeLabelTab"|trans }}
+         {% endif %}
+         {% if product.extensions.typeProduct.setProduct == 'safety' %}
+             {{ "bpa-quick-connector-finder.accessoriesProduct.safetyTypeLabelTab"|trans }}
+         {% endif %}
+         {% sw_include '@Storefront/storefront/component/product/card/box.html.twig' with {
+             'layout': sliderConfig.boxLayout.value,
+             'displayMode': sliderConfig.displayMode.value
+         } %}
+     </div>
+ {% endblock %}

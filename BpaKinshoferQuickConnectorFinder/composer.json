@@ -1,0 +1,30 @@
+{
+    "name": "bpa/kinshofer-quick-connector-finder",
+    "version": "1.0.0",
+    "type": "shopware-platform-plugin",
+    "description": "Schnellwechsler-Finder / Quick-Connector Finder",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "blackpoint GmbH",
+            "homepage": "https://www.blackpoint.de/"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Bpa\\KinshoferQuickConnectorFinder\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "Bpa\\KinshoferQuickConnectorFinder\\BpaKinshoferQuickConnectorFinder",
+        "copyright": "blackpoint GmbH",
+        "label": {
+            "de-DE": "Schnellwechsler-Finder Plugin",
+            "en-GB": "Quick-Connector Finder plugin"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://www.blackpoint.de/",
+            "en-GB": "https://www.blackpoint.de/"
+        }
+    }
+}

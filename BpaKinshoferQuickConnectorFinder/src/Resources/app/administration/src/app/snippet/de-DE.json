@@ -1,0 +1,21 @@
+{
+    "bpa-qcf-admin": {
+        "cms": {
+            "elements": {
+                "bpa-qcf-form-e": {
+                    "label": "Schnellwechsler-Finder Formular",
+                    "searchBtn": "Suche",
+                    "noConfig": "Dieses Element hat keine Konfiguration",
+                    "excavatorType": "Baggertyp",
+                    "excavatorManufacturer": "Baggerhersteller"
+                }
+            },
+            "blocks": {
+                "bpa-qcf-form": {
+                    "label": "Schnellwechsler-Finder Formular",
+                    "searchBtn": "Suche"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/storefront/component/checkout/offcanvas-item.html.twig' %}
+
+{% block component_offcanvas_product_label %}
+    {% if lineItem.extensions['onlyRequest'] and lineItem.extensions['onlyRequest']['status'] == true %}
+        <div class="bpa-offcanvas-checkout-only-request">
+            <p style="color: red">{{ "BpaKinshoferVendors.message.onlyRequestProductFlag"|trans|sw_sanitize }}</p>
+        </div>
+    {% endif %}
+
+    {{ parent() }}
+{% endblock %}

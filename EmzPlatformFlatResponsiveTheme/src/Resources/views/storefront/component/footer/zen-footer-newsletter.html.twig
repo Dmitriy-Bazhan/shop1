@@ -1,0 +1,57 @@
+{% block layout_footer_newsletter_inner %}
+    <p class="newsletter-inner-text"> </p>
+
+    <div class="cms-block cms-block-form">
+        <div class="cms-element-form">
+            {% block element_form_newsletter_form_form %}
+                <form action="{{ path('frontend.form.newsletter.register.handle') }}" method="post" data-form-csrf-handler="true" data-form-validation="true">
+                    <div class="form-content">
+                        <div class="row mb-2 ml-0 mr-0">
+                            {% block cms_form_newsletter_input_email %}
+                                <div class="footer-newsletter-column-input-email input-group">
+                                    {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-input.html.twig'
+                                        with {
+                                        fieldName: 'email',
+                                        type: 'email',
+                                        required: true,
+                                        placeholder: 'newsletter.placeholderMail'
+                                    }
+                                    %}
+
+                                    {% block cms_form_newsletter_submit %}
+                                        {% block cms_form_submit %}
+                                            <div class="input-group-append m-input-group-append">
+                                                <button type="submit" class="btn btn-primary"
+                                                        aria-label="{{ "general.formSubmit"|trans|striptags }}">
+                                                    {#                                                    {% sw_icon 'arrow-head-right' %}#}
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="16" viewBox="0 0 20 16"><g><g><image width="20" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAABYklEQVQ4T63UsUuWURTH8Y9ZQ06hBCE0OISJWwSGgYOjo4ENkTqIBNLSqlCCri4SRCiUguSQY2ODgzSUm6R/QBCEDQ4JlRpHzwV5UZ4n6iz3ee45v+8999x7bpMT68QjdOf/UY5VQ1MGbOEFdmLiLtZxAT/QUkVp8BfNIfoC+Am38BED+JaC5grwQfqv4h1uYzOAP7GLa9jHQ7ytmeU9LOMyvqItgFGvOSzgfYI3MI6ozVkWtX6J3gT1YwxPCvA1RlP5DE/zexZTDcQZTObcNCI+7BVGCjDSHj4ljFOPDPrwHY/TN4/WPMTYwc4pzVKU6zxgiYtFohSXcuJXbi3EjfYG96uAIbqIwVSv4fc5dV3FUB1gzQN3Ax3/E3i8cAEuZm3qZnNW3BVcL8AVPPgXGuLqDQfwC9rzYdhOaGn6qjXKI3Izm2AvhD34UKWs6b9TMomLPIGubMW/eb6C8RnP46L/AeNTSqgVB8qtAAAAAElFTkSuQmCC"/></g></g></svg>
+                                                </button>
+                                            </div>
+                                        {% endblock %}
+                                    {% endblock %}
+                                </div>
+                            {% endblock %}
+                        </div>
+                        {% block cms_form_newsletter_captcha %}{% endblock %}
+                        {% block cms_form_newsletter_privacy %}
+                            <div class="footer-column-newsletter-privacy">
+                                {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-privacy.html.twig' %}
+                            </div>
+                        {% endblock %}
+                    </div>
+                    {% block cms_form_newsletter_hidden_fields %}
+                        <div class="form-hidden-fields">
+                            {% block cms_form_newsletter_csrf %}
+                                {{ sw_csrf('frontend.form.newsletter.register.handle') }}
+                            {% endblock %}
+
+                            <input type="hidden" name="option" value="{{ constant('Shopware\\Storefront\\Controller\\FormController::SUBSCRIBE') }}">
+
+                            <input type="submit" class="submit--hidden d-none" />
+                        </div>
+                    {% endblock %}
+                </form>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/buy-widget.html.twig' %}
+
+{% set checkoutProductStreamsConfig = config('BpaKinshoferVendors.config.productStreamsOnlyAbout') %}
+{% set productStreams = page.product.streams.elements %}
+
+{% block page_product_detail_buy_form %}
+
+   {# -----------------------#}
+    {% set customerGroupId = context.currentCustomerGroup.id %}
+    {% set currentSalesChannel = context.salesChannelId %}
+    {% set dealers = config('BpaKinshoferVendors.config.customerGroupDealers') %}
+{# sales channels  #}
+    {% if  page.extensions.salesChannel %}
+        {% set TOGOchannel = page.extensions.salesChannel['To Go'] %}
+        {% set SparePartsChannel = page.extensions.salesChannel['Zapchasti'] %}
+        {% set SparePartsChannel1 = page.extensions.salesChannel['Spare parts'] %}
+    {% endif %}
+
+    {% if currentSalesChannel == TOGOchannel and customerGroupId not in dealers %}
+        <a href="">select dealer</a>
+        <select name="dealer" id="121">
+            <option value="address">dealer1</option>
+            <option value="">dealer2</option>
+            <option value="3">dealer3</option>
+        </select>
+    {% endif %}
+
+
+    {% if productStreams %}
+        {% for stream in checkoutProductStreamsConfig %}
+            {% if stream in productStreams|keys %}
+                <div class="bpa-product-detail-only-request">
+                    <p style="color: red">{{ "BpaKinshoferVendors.message.onlyRequestProductFlag"|trans|sw_sanitize }}</p>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+{{ parent() }}
+{% endblock %}
+

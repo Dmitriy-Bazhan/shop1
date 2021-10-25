@@ -1,0 +1,40 @@
+{% block bpa_qcf_view_list %}
+    <sw-page class="bpa-qcf-view-list">
+        <template #search-bar>
+            <sw-search-bar initialSearchType="bpa_qcf_excavator"
+                           :initialSearch="term"
+                           @search="onSearch">
+            </sw-search-bar>
+        </template>
+
+        <template #smart-bar-header>
+            <h2>
+                {% block bpa_qcf_view_list_smart_bar_header_title_text %}
+                    {{ $tc('bpa-qcf-import.common.listTitle') }}
+                {% endblock %}
+
+                {% block bpa_qcf_view_list_smart_bar_header_amount %}
+                    <span v-if="!isLoading" class="sw-page__smart-bar-amount">
+                        ({{ total }})
+                    </span>
+                {% endblock %}
+            </h2>
+        </template>
+
+        <template #content>
+            {% block bpa_qcf_view_list_content %}
+                <sw-entity-listing
+                    v-if="itemsCollection"
+                    :items="itemsCollection"
+                    :repository="bpaQcfExcavatorsRepository"
+                    :showSelection="false"
+                    :columns="columns">
+                </sw-entity-listing>
+            {% endblock %}
+
+            {% block bpa_qcf_view_list_empty_state %}
+                <sw-empty-state v-if="!isLoading && !total" :title="$tc('bpa-qcf-import.common.messageEmpty')"></sw-empty-state>
+            {% endblock %}
+        </template>
+    </sw-page>
+{% endblock %}

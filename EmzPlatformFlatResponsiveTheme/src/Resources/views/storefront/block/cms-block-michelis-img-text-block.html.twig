@@ -1,0 +1,29 @@
+{% block cms_block_michelis_img_text_block %}
+    <div class="m-page-two">
+        {% block cms_block_michelis_img_text_block_first %}
+            {% set element = block.slots.getSlot('firstLeft') %}
+
+            <div class="michelis-image-block-slot">
+                {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+            </div>
+        {% endblock %}
+
+        {% block cms_block_michelis_img_text_block_second %}
+            {% set element = block.slots.getSlot('secondRight') %}
+
+            <div class="michelis-text-block-slot">
+                {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                {% block cms_block_michelis_img_text_block_third %}
+                    {% set element = block.slots.getSlot('button') %}
+
+                    <div class="michelis-btn-block-slot">
+                        {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                    </div>
+                {% endblock %}
+
+            </div>
+        {% endblock %}
+
+
+    </div>
+{% endblock %}

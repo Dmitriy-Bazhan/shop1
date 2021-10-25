@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="Bpa\KinshoferVendors\Controller\TestController" public="true">
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="Bpa\KinshoferVendors\Service\CustomerSynchronizationService"/>
+        </service>
+
+        <service id="Bpa\KinshoferVendors\ScheduledTask\SynchronizationTask">
+            <tag name="shopware.scheduled.task"/>
+        </service>
+
+        <service id="Bpa\KinshoferVendors\ScheduledTask\SynchronizationTaskHandler">
+            <argument type="service" id="scheduled_task.repository" />
+            <argument type="service" id="Bpa\KinshoferVendors\Service\CustomerSynchronizationService"/>
+            <tag name="messenger.message_handler"/>
+        </service>
+
+        <service id="Bpa\KinshoferVendors\Service\CustomerSynchronizationService">
+            <argument type="service" id="service_container"/>
+        </service>
+
+        <service id="Bpa\KinshoferVendors\Subscriber\ProductStreamSubscriber">
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService" />
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+    </services>
+</container>

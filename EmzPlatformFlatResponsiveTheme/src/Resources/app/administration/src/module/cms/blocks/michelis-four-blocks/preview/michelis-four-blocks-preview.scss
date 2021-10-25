@@ -1,0 +1,18 @@
+.michelis-four-blocks-preview {
+  display: flex;
+  flex-direction: column;
+
+  .michelis-four-blocks-preview-feeds {
+    position: relative;
+    display: flex;
+    padding: 10px;
+
+    .michelis-four-blocks-preview-feed {
+      display: block;
+      margin: 0 5px;
+
+      img {
+      }
+    }
+  }
+}

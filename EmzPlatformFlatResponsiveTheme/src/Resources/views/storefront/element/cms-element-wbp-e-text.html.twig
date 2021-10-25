@@ -1,0 +1,49 @@
+{% block cms_element_wbp_text_image %}
+    {% set translatedConfig = element.translated.config %}
+    {% set config = element.fieldConfig.elements %}
+<div class="wbp-text-image-left-block">
+
+    <div class="wbp-text-image-title-block-first">
+        <h1> {% if translatedConfig.titleM.value %}
+           {{ translatedConfig.titleM.value }}
+            {% endif %}</h1>
+    </div>
+
+
+    <div class="wbp-text-image-title-block">
+        {% if translatedConfig.title.value %}
+            {{ translatedConfig.title.value }}
+        {% endif %}
+    </div>
+
+    <div class="wbp-text-image-textarea-block">
+        <div class="cms-element-{{ element.type }}{% if config.verticalAlign.value %} has-vertical-alignment{% endif %}">
+            {% block element_text_alignment %}
+                {% if config.verticalAlign.value %}
+                    <div class="cms-element-alignment{% if config.verticalAlign.value == "center" %} align-self-center{% elseif config.verticalAlign.value == "flex-end" %} align-self-end{% else %} align-self-start{% endif %}">
+                {% endif %}
+                {% block element_text_inner %}
+                    {{ element.config.content.value|raw }}
+                {% endblock %}
+                {% if config.verticalAlign.value %}
+                    </div>
+                {% endif %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <div class="wbp-text-image-title-second-block">
+        {% if translatedConfig.titleSecond.value %}
+            {{ translatedConfig.titleSecond.value }}
+        {% endif %}
+    </div>
+
+    <div class="wbp-text-image-time-block">
+        {% if translatedConfig.time.value %}
+            {{ translatedConfig.time.value|raw }}
+        {% endif %}
+    </div>
+
+</div>
+
+{% endblock %}

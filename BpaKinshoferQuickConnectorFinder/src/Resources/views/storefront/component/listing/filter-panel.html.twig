@@ -1,0 +1,37 @@
+{% sw_extends '@Storefront/storefront/component/listing/filter-panel.html.twig' %}
+
+{% block component_filter_panel_item_manufacturer %}
+    {% block component_filter_panel_item_bpa_qcf %}
+        {% if controllerName == 'Finder' and controllerAction == 'connectorFinder' %}
+            {% block component_filter_panel_item_bpa_qcf_manufacturer %}
+                {% if listing.aggregations.get('bpaQcfManufacturer') and listing.aggregations.get('bpaQcfManufacturer').entities|length %}
+                    {% set bpaQcfManufacturer = listing.aggregations.get('bpaQcfManufacturer') %}
+                    {% set noop = bpaQcfManufacturer.entities.processTranslated() %}
+
+                    {% sw_include '@Storefront/storefront/component/listing/filter/filter-multi-select.html.twig' with {
+                        elements: bpaQcfManufacturer.entities,
+                        sidebar: sidebar,
+                        name: 'bpaQcfManufacturer',
+                        displayName: 'bpa-quick-connector-finder.filters.excavatorManufacturer'|trans|sw_sanitize
+                    } %}
+                {% endif %}
+            {% endblock %}
+
+            {% block component_filter_panel_item_bpa_qcf_type %}
+                {% if listing.aggregations.get('bpaQcfType') and listing.aggregations.get('bpaQcfType').entities|length %}
+                    {% set bpaQcfType = listing.aggregations.get('bpaQcfType') %}
+                    {% set noop = bpaQcfType.entities.processTranslated() %}
+
+                    {% sw_include '@Storefront/storefront/component/listing/filter/filter-multi-select.html.twig' with {
+                        elements: bpaQcfType.entities,
+                        sidebar: sidebar,
+                        name: 'bpaQcfType',
+                        displayName: 'bpa-quick-connector-finder.filters.excavatorType'|trans|sw_sanitize
+                    } %}
+                {% endif %}
+            {% endblock %}
+        {% endif %}
+    {% endblock %}
+
+    {{ parent() }}
+{% endblock %}

@@ -1,0 +1,9 @@
+{% block sw_search_bar_item_cms_page %}
+    {% parent %}
+
+    <span v-else-if="type === 'bpa_qcf_excavator'" class="sw-search-bar-item__label">
+        <sw-highlight-text v-bind:searchTerm="searchTerm"
+                           v-bind:text="item.type">
+        </sw-highlight-text>
+    </span>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% block cms_element_michelis_e_landing_slider %}
+    {% set sliderConfig = element.fieldConfig.elements %}
+    {% set landingSliderItems = element.translated.config.landingSliderItems.value %}
+
+    {% if landingSliderItems %}
+        <div class="m-top-carousel">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
+                <div class="slider-container">
+                    <ol class="carousel-indicators">
+                        {% set cnt = 0 %}
+                        {% for slide in landingSliderItems %}
+                            <li data-target="#carouselExampleIndicators" data-slide-to="{{ cnt }}"{% if cnt == 0 %} class="active">{% endif %}</li>
+                            {% set cnt = cnt + 1 %}
+                        {% endfor %}
+                    </ol>
+                </div>
+
+                <div class="m-slider-carousel-inner">
+
+                    {% set cnt = 0 %}
+                    {% for slide in landingSliderItems %}
+                        {% set imageCollection = searchMedia([slide['mediaId']], context.context) %}
+                        {% set imageUrl = imageCollection.get(slide['mediaId']).url %}
+                        <div class="carousel-item{% if cnt == 0 %} active{% endif %}"
+                             style="background-image: url('{{ imageUrl }}');">
+
+                            <div class="m-container-text-slide">
+
+                                <div class="m-slide__wrap">
+                                    <div class="m-slide__content {% if sliderItems[cnt]["text_img_position"] == true %}is--right{% else %}is--left{% endif %}">
+                                        <div class="m-slide__items">
+                                            <h1>{{ slide.label|nl2br|sw_sanitize }}</h1>
+                                            <p>{{ slide.title|nl2br|sw_sanitize }}</p>
+                                        </div>
+
+                                        <div class="m-slider-btns-block">
+                                            {% if(slide.btnName|sw_sanitize) %}
+                                                <a href="{{ slide.btnUrl }}" class="link-default">{{ slide.btnName|sw_sanitize }}</a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        {% set cnt = cnt + 1 %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+
+{% endblock %}

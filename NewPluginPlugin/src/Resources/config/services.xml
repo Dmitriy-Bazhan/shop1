@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!-- Definitions -->
+        <service id="NewPluginPlugin\Core\Content\NewPluginData\NewPluginDataEntityDefinitions">
+            <tag name="shopware.entity.definition" entity="a_new_plugin_data" />
+        </service>
+
+        <service id="NewPluginPlugin\Core\Content\NewPluginItem\NewPluginItemEntityDefinitions">
+            <tag name="shopware.entity.definition" entity="a_new_plugin_item" />
+        </service>
+
+        <!-- Extensions -->
+        <service id="NewPluginPlugin\Core\Extensions\NewCustomExtension">
+            <tag name="shopware.entity.extension"/>
+        </service>
+
+        <!-- Services -->
+        <service id="new_plugin_first_service.service" class="NewPluginPlugin\Service\NewPluginFirstService" public="true">
+            <argument type="service" id="product.repository"/>
+        </service>
+
+        <!-- Subscribers -->
+        <service id="NewPluginPlugin\Subscriber\NewPluginSubscriber">
+            <argument type="service" id="product.repository"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="NewPluginPlugin\Command\PluginCommand">
+            <tag name="console.command"/>
+        </service>
+
+        <!-- Controllers -->
+        <service id="NewPluginPlugin\Controller\NewPluginController" public="true">
+            <argument type="service" id="product.repository"/>
+            <argument type="service" id="a_new_plugin_data.repository"/>
+            <argument type="service" id="a_new_plugin_item.repository"/>
+            <argument type="service" id="new_plugin_first_service.service"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService" />
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+    </services>
+
+</container>

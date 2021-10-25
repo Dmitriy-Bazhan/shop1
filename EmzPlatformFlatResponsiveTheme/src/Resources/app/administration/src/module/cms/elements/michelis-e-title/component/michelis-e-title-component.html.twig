@@ -1,0 +1,6 @@
+{% block sw_cms_element_michelis_e_title_component %}
+    <div class="michelis-e-title-component">
+        <div v-if="element.config.title.value" class="michelis-e-title-component-title">{{ element.config.title.value }}</div>
+        <div v-else class="michelis-e-title-component-title">Some Title Text</div>
+    </div>
+{% endblock %}

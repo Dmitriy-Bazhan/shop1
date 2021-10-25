@@ -1,0 +1,18 @@
+{% block sw_cms_block_michelis_img_text_block %}
+    <div class="sw-cms-block-michelis-img-text-block">
+
+        <slot name="firstLeft">
+            {% block sw_cms_block_michelis_img_block_left %}{% endblock %}
+        </slot>
+
+            <slot name="secondRight">
+                {% block sw_cms_block_michelis_text_block_right %}{% endblock %}
+            </slot>
+
+        <slot name="button">
+            {% block sw_cms_block_michelis_img_button_slot %}{% endblock %}
+        </slot>
+
+
+    </div>
+{% endblock %}

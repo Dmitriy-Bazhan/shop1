@@ -1,0 +1,16 @@
+{% sw_extends '@EmzPlatformFlatResponsiveTheme/storefront/layout/header/header.html.twig' %}
+
+{% block layout_header %}
+
+    {{ parent() }}
+
+{% endblock %}
+
+
+{% block layout_header_logo %}
+    <div class="col-12 col-lg-auto header-logo-col">
+
+        {% sw_include '@Storefront/storefront/layout/header/logo.html.twig' %}
+
+    </div>
+{% endblock %}

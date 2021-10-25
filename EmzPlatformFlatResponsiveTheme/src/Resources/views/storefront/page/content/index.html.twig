@@ -1,0 +1,8 @@
+{% sw_extends '@Storefront/storefront/page/content/index.html.twig' %}
+
+{% block cms_breadcrumb %}
+    {% if ('navigation' == controllerName|lower and 'home' == controllerAction|lower) or 'LandingPage' != controllerName|lower %}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

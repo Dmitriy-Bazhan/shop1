@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <component name="sw-entity-multi-id-select">
+            <name>customerGroupDisabled</name>
+            <label>Customer groups that are not allowed to order</label>
+            <label lang="de-DE">Kundengruppen die nicht bestellen dürfen</label>
+            <entity>customer_group</entity>
+        </component>
+
+        <component name="sw-entity-multi-id-select">
+            <name>customerGroupDisabledKinshofer</name>
+            <label>Customer groups that may not enquire with Kinshofer</label>
+            <label lang="de-DE">Kundengruppen, die nicht bei Kinshofer anfragen dürfen</label>
+            <entity>customer_group</entity>
+        </component>
+
+        <component name="sw-entity-multi-id-select">
+            <name>productStreamsOnlyAbout</name>
+            <label>Product streams where the products may only be inquired about.</label>
+            <label lang="de-DE">Produktströme, bei denen die Produkte nur angefragt werden dürfen.</label>
+            <entity>product_stream</entity>
+        </component>
+
+        <component name="sw-entity-multi-id-select">
+            <name>customerGroupStandart</name>
+            <label>Standart Customer</label>
+            <label lang="de-DE">Standardkunde</label>
+            <entity>customer_group</entity>
+        </component>
+
+        <component name="sw-entity-multi-id-select">
+            <name>customerGroupDealers</name>
+            <label>Dealers</label>
+            <label lang="de-DE">Händler</label>
+            <entity>customer_group</entity>
+        </component>
+
+    </card>
+</config>

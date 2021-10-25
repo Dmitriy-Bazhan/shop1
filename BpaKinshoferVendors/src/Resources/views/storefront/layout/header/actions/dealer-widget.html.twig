@@ -1,0 +1,33 @@
+{% block layout_header_actions_dealer_widget %}
+    <div class="dropdown">
+        {% block layout_header_actions_dealer_widget_info %}
+            <button class="btn dealer-info-btn header-actions-btn"
+                    type="button"
+                    id="dealerWidget"
+                    data-offcanvas-account-menu="true"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    aria-label="{{ "account.myAccount"|trans|striptags }}"
+                    title="{{ "account.myAccount"|trans|striptags }}">
+                <p id="store-label"></p>
+            </button>
+        {% endblock %}
+
+        {% block layout_header_actions_dealer_widget_dropdown_menu %}
+            <div class="dropdown-menu dropdown-menu-right account-menu-dropdown js-account-menu-dropdown"
+                 aria-labelledby="dealerWidget">
+                <p class="bpa-qcf-title">{{ "BpaKinshoferVendors.label.dealerAddress"|trans }}</p>
+                <ul class="bpa-qcf-address-info">
+                    <li id="store-street"></li><span id="store-street-number"></span>
+                    <li id="store-country"></li>
+                    <li id="store-city"></li>
+                    <li id="store-email"></li>
+                    <li id="store-phone"></li>
+                    <li id="store-street-number"></li>
+                    <li id="store-email"></li>
+                </ul>
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

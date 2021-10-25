@@ -1,0 +1,17 @@
+{
+    "BpaKinshoferVendors": {
+        "message": {
+            "orderOnlyDealerMessage": "Kannst du deinen Händler fragen",
+            "orderForKinshofer": "Sie können eine Anfrage an Kinshofer stellen",
+            "onlyRequestProduct": "Ihr Warenkorb enthält Artikel, die nur auf Anfrage erhältlich sind. Um eine Bestellung aufzugeben, entfernen Sie sie aus dem Warenkorb.",
+            "onlyRequestProductFlag": "Nur auf Anfrage"
+        },
+        "button": {
+            "changeDealer": "Händler wechseln",
+            "requestDealer": "Händler anfragen"
+        },
+        "label": {
+            "dealerAddress": "Adresse Händler"
+        }
+    }
+}

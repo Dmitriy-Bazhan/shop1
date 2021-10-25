@@ -1,0 +1,38 @@
+{
+    "global": {
+        "entities": {
+            "bpa_qcf_excavator": "Bagger | Bagger"
+        }
+    },
+    "bpa-qcf-import": {
+        "searchSnippet": "Bagger...",
+        "common": {
+            "mainMenuItemGeneral": "Bagger & Schnellwechsler",
+            "descriptionTextModule": "Verwalten der Bagger und Schnellwechsler",
+            "importListTitle": "Import",
+            "listTitle": "Bagger auflisten",
+            "relationsTitle": "Schnellwechsler auflisten",
+            "startImport": "Import starten",
+            "messageEmpty": "Nichts gefunden"
+        },
+        "labels": {
+            "uploadCsvLabel": "EGgroup-Baggerhersteller-Baggertyp.csv hochladen",
+            "uploadCsvLabelGroupProduct": "Schnellwechsler-EGg-Art.Nr.csv hochladen",
+            "labelUploadCaption": "Wähle eine Datei zum Hochladen",
+            "titleImportSuccess": "Erfolg",
+            "messageImportSuccess": "Der Import wurde erfolgreich abgeschlossen.",
+            "titleImportError": "Fehler",
+            "errorNotificationTitle": "Fehler beim Import"
+        },
+        "columns": {
+            "type": "Typ",
+            "manufacturer": "Hersteller",
+            "group": "Gruppe",
+            "productNumber": "Produktnummer",
+            "quickCoupler": "Schnellwechsler",
+            "loadHook": "Lasthaken",
+            "basicSet": "Installationsset Basic",
+            "safetySet": "Installationsset Safety"
+        }
+    }
+}

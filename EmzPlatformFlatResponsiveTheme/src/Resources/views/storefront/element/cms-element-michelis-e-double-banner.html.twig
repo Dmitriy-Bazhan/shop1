@@ -1,0 +1,34 @@
+{% block element_image_slider %}
+    {% set translatedConfig = element.translated.config %}
+    {% set bannersItems = translatedConfig.doubleBanners.value %}
+
+    <section class="michelis-double-banner-category">
+        <div class="michelis-double-banner-container">
+            <div class="row michelis-double-category-list">
+                {% if bannersItems|length > 0 %}
+                    {% for banner in bannersItems %}
+                        {% set link = banner.url ?? 'javascript:void(0)' %}
+                        {% set showBtn = banner.url ? true : false %}
+
+                        <div class="col-md-6 michelis-double-banner-category-list__item">
+                            <div class="michelis-category-list__link_double_banner" {% if banner.mediaUrl %}style="background-image: url('{{ banner.mediaUrl }}')"{% endif %}>
+                                <div class="m-double-banner_part">
+                                <p class="michelis-category-list__label_double_banner">{{ banner.label }}</p>
+                                    <p class="michelis-category-list__cost_double_banner">{{ banner.cost }}</p>
+                                <p class="michelis-category-list__title_double_banner">{{ banner.title }}</p>
+
+                                {% if showBtn %}
+                                    <div class="m-double-banner-bot">
+                                        <a href="{{ link }}" class="michelis-btn_double_banner">{{ banner.btnName }} {% if translatedConfig.newTab.value %}target="_blank"{% endif %}</a>
+                                    </div>
+                                {% endif %}
+                                </div>
+                            </div>
+
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

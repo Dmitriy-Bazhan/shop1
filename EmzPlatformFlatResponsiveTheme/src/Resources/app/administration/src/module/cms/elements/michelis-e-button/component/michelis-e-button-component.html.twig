@@ -1,0 +1,6 @@
+{% block michelis_e_button_component %}
+    <div class="michelis-e-button-component">
+        <button v-if="element.config.btnLabel.value" class="michelis-e-button-component-button">{{ element.config.btnLabel.value }}</button>
+        <button v-else class="michelis-e-button-component-button">{{ $tc('michelis.cms.elements.michelis-e-button.labelPreview') }}</button>
+    </div>
+{% endblock %}

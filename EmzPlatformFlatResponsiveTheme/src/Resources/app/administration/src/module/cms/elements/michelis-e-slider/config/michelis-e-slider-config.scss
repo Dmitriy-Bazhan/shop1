@@ -1,0 +1,36 @@
+.michelis-e-slider {
+    .michelis-e-slider__setting-option {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+        gap: 0 32px;
+    }
+
+    .michelis-e-slider__setting-display-mode {
+        grid-column: 1 / -1;
+    }
+
+    .michelis-e-slider__settings-links {
+        .michelis-e-slider__settings-link {
+            margin-top: 8px;
+
+            .michelis-e-slider__settings-link-input {
+                margin-bottom: 8px;
+
+                .sw-field__addition {
+                    &.is--prefix {
+                        padding: 5px 0 5px 5px;
+                        background: initial;
+                        border-right: none;
+                    }
+                }
+            }
+
+            .michelis-e-slider__settings-link-prefix {
+                height: 36px;
+                width: 44px;
+                border-radius: 2px;
+                object-fit: cover;
+            }
+        }
+    }
+}

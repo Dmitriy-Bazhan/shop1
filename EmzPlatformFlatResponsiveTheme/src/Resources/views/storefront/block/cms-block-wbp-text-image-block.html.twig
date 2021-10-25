@@ -1,0 +1,24 @@
+{% block wbp_text_image_block %}
+    {% set columns = 2 %}
+    {% set id = element.id %}
+
+    {% block block_image_text_left %}
+        {% set element = block.slots.getSlot('slotFirst') %}
+
+        <div class="col-md-4" data-cms-element-id="{{ element.id }}">
+            {% block block_image_text_left_inner %}
+                {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+
+    {% block block_image_text_right %}
+        {% set element = block.slots.getSlot('slotSecond') %}
+
+        <div class="col-md-8 m-image-block-r m-inner-about " data-cms-element-id="{{ element.id }}">
+            {% block block_image_text_right_inner %}
+                {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+{% endblock %}

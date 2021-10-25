@@ -1,0 +1,32 @@
+.michelis-e-double-banner-config {
+    .michelis-e-double-banner-config__setting-option {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+        gap: 0 32px;
+    }
+
+    .michelis-e-double-banner-config__settings-links {
+        .michelis-e-double-banner-config__settings-link {
+            margin-top: 8px;
+
+            .michelis-e-double-banner-config__settings-link-input {
+                margin-bottom: 8px;
+
+                .sw-field__addition {
+                    &.is--prefix {
+                        padding: 5px 0 5px 5px;
+                        background: initial;
+                        border-right: none;
+                    }
+                }
+            }
+
+            .michelis-e-double-banner-config__settings-link-prefix {
+                height: 36px;
+                width: 44px;
+                border-radius: 2px;
+                object-fit: cover;
+            }
+        }
+    }
+}

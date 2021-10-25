@@ -1,0 +1,62 @@
+{% block bpa_qcf_view_import_page %}
+    <sw-page class="bpa-qcf-view-import-page">
+
+        <template #smart-bar-header>
+            <h2>{{ $tc('bpa-qcf-import.common.importListTitle') }}</h2>
+        </template>
+
+        <template #content>
+            <sw-card-view>
+                {% block bpa_qcf_view_import %}
+                    <div class="bpa-qcf-view-import">
+                        {% block bpa_qcf_view_import_importer %}
+                            <sw-card>
+                                    <div class="bpa-qcf-view-import-importer">
+                                        {% block bpa_qcf_view_import_importer_upload_csv_label %}
+                                            <h2>{{ $tc('bpa-qcf-import.labels.uploadCsvLabel') }}</h2>
+                                        {% endblock %}
+
+                                        {% block bpa_qcf_view_import_importer_file_input %}
+                                            <sw-file-input v-model="importFile">
+                                                <template #caption-label>
+                                                    {{ $tc('bpa-qcf-import.labels.labelUploadCaption') }}
+                                                </template>
+                                            </sw-file-input>
+                                        {% endblock %}
+
+                                        {% block bpa_qcf_view_import_importer_progress %}
+                                            <sw-button :disabled="disableImporting" variant="primary" @click="onStartProcess()">
+                                                {{ $tc('bpa-qcf-import.common.startImport') }}
+                                            </sw-button>
+                                        {% endblock %}
+                                    </div>
+                            </sw-card>
+
+                            <sw-card>
+                                <div class="bpa-qcf-view-import-importer">
+                                    {% block bpa_qcf_view_import_importer_upload_csv_label_group_product %}
+                                        <h2>{{ $tc('bpa-qcf-import.labels.uploadCsvLabelGroupProduct') }}</h2>
+                                    {% endblock %}
+
+                                    {% block bpa_qcf_view_import_importer_file_input_group_product %}
+                                        <sw-file-input v-model="importFileGroupProduct">
+                                            <template #caption-label>
+                                                {{ $tc('bpa-qcf-import.labels.labelUploadCaption') }}
+                                            </template>
+                                        </sw-file-input>
+                                    {% endblock %}
+
+                                    {% block bpa_qcf_view_import_importer_progress_group_product %}
+                                        <sw-button :disabled="disableImportingGroupProduct" variant="primary" @click="onStartProcessGroupProduct()">
+                                            {{ $tc('bpa-qcf-import.common.startImport') }}
+                                        </sw-button>
+                                    {% endblock %}
+                                </div>
+                            </sw-card>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+            </sw-card-view>
+        </template>
+    </sw-page>
+{% endblock %}

@@ -1,0 +1,25 @@
+{
+  "name": "new/pluginplugin",
+  "description": "New plugin",
+  "type": "shopware-platform-plugin",
+  "version": "1.0.0",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Dima"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "NewPluginPlugin\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "NewPluginPlugin\\NewPluginPlugin",
+    "copyright": "Dima",
+    "label": {
+      "de-DE": "New plugin",
+      "en-GB": "New plugin"
+    }
+  }
+}

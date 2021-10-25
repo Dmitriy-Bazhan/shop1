@@ -1,0 +1,21 @@
+{
+    "bpa-qcf-admin": {
+        "cms": {
+            "elements": {
+                "bpa-qcf-form-e": {
+                    "label": "Quick-Connector Finder Form",
+                    "searchBtn": "Search",
+                    "noConfig": "This element has no configuration",
+                    "excavatorType": "Excavator type",
+                    "excavatorManufacturer": "Excavator manufacturer"
+                }
+            },
+            "blocks": {
+                "bpa-qcf-form": {
+                    "label": "Quick-Connector Finder Form",
+                    "searchBtn": "Search"
+                }
+            }
+        }
+    }
+}

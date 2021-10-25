@@ -1,0 +1,11 @@
+{% block cms_block_michelis_slider %}
+    {% set element = block.slots.getSlot('slider') %}
+
+    <section class="michelis-main-slider">
+        {% block cms_block_michelis_slider_inner %}
+            <slick :options="mainSliderSlickOptions">
+                {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+            </slick>
+        {% endblock %}
+    </section>
+{% endblock %}

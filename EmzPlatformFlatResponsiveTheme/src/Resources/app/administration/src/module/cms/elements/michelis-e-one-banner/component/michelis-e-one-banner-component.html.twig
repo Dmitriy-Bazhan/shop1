@@ -1,0 +1,15 @@
+{% block michelis_e_one_banner_component %}
+    <div class="michelis-e-one-banner-component">
+        
+        <div v-if="!element.data.oneBanners" class="michelis-one-banner-nocontent">
+            <div class="rowBanner">
+                <span class="banner block"></span>
+            </div>
+        </div>
+        
+        <div v-else class="michelis-one-banner-content">
+            <img class="michelis-one-banner-content-banner" v-for="banner in element.data.oneBanners" :src="banner.mediaUrl">
+        </div>
+        
+    </div>
+{% endblock %}

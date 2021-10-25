@@ -1,0 +1,269 @@
+{
+  "michelis": {
+    "global": {
+      "actions": {
+        "save": "Save",
+        "add": "Add",
+        "cancel": "Cancel",
+        "back": "Back"
+      }
+    },
+    "cms": {
+      "elements": {
+        "michelis-e-feed": {
+          "label": "Image Feed",
+          "labelPreview": "Image Feed",
+          "caption": "Caption",
+          "labels": {
+            "image": "Image",
+            "mediaUpload": "Upload an image",
+            "mappingEmptyPreview": "No preview available.",
+            "url": "Url to",
+            "caption": "Caption",
+            "label": "Label",
+            "linkNewTab": "Open in new tab"
+          },
+          "placeholders": {
+            "caption": "Caption",
+            "url": "Url to...",
+            "label": "Label"
+          }
+        },
+        "michelis-e-slider": {
+          "label": "Michelis Main Slider",
+          "labels": {
+            "btnText": "Design",
+            "btnName": "Button name",
+            "label": "Label slide",
+            "title": "Title slide",
+            "titleBackground": "Title with backdrop",
+            "urlSecond": "Url to",
+            "btnTextAll": "All Christmas balls",
+            "btnNameAll": "Button name"
+          },
+          "placeholders": {
+            "label": "Enter label slide...",
+            "title": "Enter title slide...",
+            "titleBackground": "Enter title with backdrop...",
+            "urlSecond": "Url to..."
+          }
+        },
+        "michelis-e-landing-slider": {
+          "label": "Michelis Landing Page Slider",
+          "labels": {
+            "btnText": "Button name",
+            "btnName": "Button name",
+            "label": "Label slide",
+            "title": "Title slide",
+            "urlSecond": "Url to"
+          },
+          "placeholders": {
+            "label": "Enter label slide...",
+            "title": "Enter title slide...",
+            "urlSecond": "Url to..."
+          }
+        },
+        "michelis-e-banner-box": {
+          "label": "Michelis Top Categories",
+          "labels": {
+            "btnText": "Shop Now",
+            "btnName": "Button name",
+            "label" : "Label name",
+            "title": "Title banner",
+            "description": "Description"
+          },
+          "placeholders": {
+            "title": "Enter title on banner...",
+            "description": "Enter description on banner..."
+          }
+        },
+        "michelis-e-title": {
+          "label": "Michelis Title",
+          "labels": {
+            "title": "Title"
+          },
+          "placeholders": {
+            "title": "Enter title..."
+          }
+        },
+        "michelis-e-one-banner": {
+          "label": "Michelis One Banner",
+          "labels": {
+            "btnText": "Shop Now",
+            "btnName": "Button name",
+            "label" : "Label name",
+            "title": "Title banner"
+          },
+          "placeholders": {
+            "label": "Enter label on banner...",
+            "title": "Enter title on banner..."
+          }
+        },
+        "michelis-e-double-banner": {
+          "label": "Michelis Double Banner",
+          "labels": {
+            "btnText": "Shop Now",
+            "btnName": "Button name",
+            "label" : "Label name",
+            "title": "Title banner",
+            "cost":"Cost"
+          },
+          "placeholders": {
+            "label": "Enter label on banner...",
+            "title": "Enter title on banner...",
+            "cost": "Enter the price..."
+          }
+        },
+        "michelis-e-top-categories-down": {
+          "label": "Image Feed",
+          "labelPreview": "Image Feed",
+          "title": "Title",
+          "titleSecond": "Second Block Title",
+          "titleThird": "Third Block Title",
+          "labels": {
+            "image": "Image",
+            "mediaUpload": "Upload an image",
+            "mappingEmptyPreview": "No preview available.",
+            "description": "Description",
+            "descriptionSecond": "Second Block Description",
+            "descriptionThird": "Third Block Description",
+            "url": "Url to",
+            "urlSecond": "Url to",
+            "urlThird": "Url to",
+            "btnLabel": "Button name",
+            "btnLabelSecond": "Second Block Button name",
+            "btnLabelThird": "Third Block Button name",
+            "linkNewTab": "Open in new tab"
+          },
+          "placeholders": {
+            "title": "Enter first block title...",
+            "titleSecond": "Enter second block title...",
+            "titleThird": "Enter third block title...",
+            "description": "Enter first block description...",
+            "descriptionSecond": "Enter second block description...",
+            "descriptionThird": "Enter third block description...",
+            "url": "Enter first block page link...",
+            "urlSecond": "Enter second block page link...",
+            "urlThird": "Enter third block page link...",
+            "btnLabel": "Enter the name of the first block button...",
+            "btnLabelSecond": "Enter the name of the second block button...",
+            "btnLabelThird": "Enter the name of the third block button..."
+          }
+        },
+        "wbp-e-text": {
+          "label": "Michelis Text-Image Block",
+          "titleM": "Main Title",
+          "title": "Title",
+          "titleSecond":"Second Title",
+          "time":"Time",
+          "labels": {
+            "titleM": "Main Title",
+            "title": "Title",
+            "titleSecond":"Second Title",
+            "time":"Time"
+          },
+          "placeholders": {
+            "titleM": "Enter Main Title...",
+            "title": "Enter title...",
+            "titleSecond":"Enter second title...",
+            "time":"Enter work time..."
+          }
+        },
+        "michelis-e-button": {
+          "label": "Michelis Button",
+          "labelPreview": "Button",
+          "labels": {
+            "url": "Url to",
+            "btnLabel": "Button name",
+            "linkNewTab": "Open in new tab"
+          },
+          "placeholders": {
+            "url": "Enter page link...",
+            "btnLabel": "Enter the name of the button..."
+          }
+        },
+        "michelis-e-four-blocks": {
+          "label": "Michelis Four Image Blocks",
+          "labels": {
+            "url": "Url to",
+            "image": "Image",
+            "mediaUpload": "Upload an image",
+            "mappingEmptyPreview": "No preview available.",
+            "linkNewTab": "Open in new tab"
+          },
+          "placeholders": {
+            "url": "Enter page link..."
+          }
+        },
+        "michelis-e-img-text-block": {
+          "label": "Michelis Image-Text Block",
+          "title": "Title",
+          "description": "Description",
+          "costFirst": "Cost First",
+          "costSecond": "Cost Second",
+          "labels": {
+            "title": "Title",
+            "description": "Description",
+            "costFirst": "Cost First",
+            "costSecond": "Cost Second"
+          },
+          "placeholders": {
+            "title": "Enter the title...",
+            "description": "Enter description...",
+            "costFirst": "Enter the first price...",
+            "costSecond": "Enter the second price..."
+          }
+        }
+      },
+      "blocks": {
+        "michelis-six-banners": {
+          "label": "Wbp Michelis Six Banners",
+          "labelPreview": "Wbp Michelis Six Banners",
+          "title": "Title",
+          "caption": "Caption"
+        },
+        "michelis-slider": {
+          "label": "Michelis Main Slider"
+        },
+        "michelis-banner-box": {
+          "label": "Michelis Top Categories"
+        },
+        "michelis-title": {
+          "label": "Michelis Title",
+          "labelPreview": "Some Title Text"
+        },
+        "michelis-one-banner": {
+          "label": "Michelis One Banner"
+        },
+        "michelis-double-banner": {
+          "label": "Michelis Double Banner"
+        },
+        "michelis-top-categories-down": {
+          "label": "Michelis Top Categories Down"
+        },
+        "wbp-text-image-block": {
+          "label": "Michelis Text-Image Block"
+        },
+        "michelis-button": {
+          "label": "Michelis Button",
+          "labelPreview": "Button"
+        },
+        "michelis-landing-slider": {
+          "label": "Michelis Landing Page Slider"
+        },
+        "michelis-three-text": {
+          "label": "Michelis Three Text"
+        },
+        "michelis-img-button": {
+          "label": "Michelis Image-Button"
+        },
+        "michelis-img-text-block": {
+          "label": "Michelis Image-Text Block"
+        },
+        "michelis-four-blocks": {
+          "label": "Michelis Four Image Blocks"
+        }
+      }
+    }
+  }
+}

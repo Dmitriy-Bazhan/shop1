@@ -1,0 +1,67 @@
+{% block michelis_e_four_blocks_config %}
+    <div class="michelis-e-four-blocks-config">
+        {% block michelis_e_four_blocks_config_media_upload %}
+            <sw-cms-mapping-field
+                    :label="$tc('michelis.cms.elements.michelis-e-four-blocks.labels.image')"
+                    valueTypes="entity"
+                    entity="media"
+                    v-model="element.config.media">
+
+                <sw-media-upload-v2 variant="regular"
+                                    :uploadTag="uploadTag"
+                                    :source="previewSource"
+                                    :allowMultiSelect="false"
+                                    :defaultFolder="cmsPageState.pageEntityName"
+                                    :caption="$tc('michelis.cms.elements.michelis-e-four-blocks.labels.mediaUpload')"
+                                    @media-upload-sidebar-open="onOpenMediaModal"
+                                    @media-upload-remove-image="onImageRemove">
+                </sw-media-upload-v2>
+
+                <div class="michelis-e-four-blocks-config-image-preview" slot="preview" slot-scope="{ demoValue }">
+                    <img :src="demoValue.url" v-if="demoValue.url">
+                    <sw-alert class="michelis-e-four-blocks-config-image-preview-info" variant="info" v-else>
+                        {{ $tc('michelis.cms.elements.michelis-e-four-blocks.labels.mappingEmptyPreview') }}
+                    </sw-alert>
+                </div>
+            </sw-cms-mapping-field>
+
+            <sw-upload-listener
+                    :uploadTag="uploadTag"
+                    autoUpload
+                    @media-upload-finish="onImageUpload">
+            </sw-upload-listener>
+        {% endblock %}
+
+        {% block michelis_e_four_blocks_config_url %}
+            <sw-field v-model="element.config.url.value"
+                      class="michelis-e-four-blocks-config-url"
+                      type="text"
+                      :label="$tc('michelis.cms.elements.michelis-e-four-blocks.labels.url')"
+                      :placeholder="$tc('michelis.cms.elements.michelis-e-four-blocks.placeholders.url')">
+            </sw-field>
+        {% endblock %}
+
+        {% block michelis_e_four_blocks_config_newTab %}
+            <sw-field v-model="element.config.newTab.value"
+                      class="michelis-e-four-blocks-config-newtab"
+                      type="switch"
+                      :label="$tc('michelis.cms.elements.michelis-e-four-blocks.labels.linkNewTab')">
+            </sw-field>
+        {% endblock %}
+
+        {% block michelis_e_four_blocks_config_media_modal %}
+            <sw-media-modal-v2
+                    variant="regular"
+                    v-if="mediaModalIsOpen"
+                    :caption="$tc('michelis.cms.elements.michelis-e-four-blocks.labels.mediaUpload')"
+                    :entityContext="cmsPageState.entityName"
+                    :allowMultiSelect="false"
+                    :initialFolderId="cmsPageState.defaultMediaFolderId"
+                    @media-upload-remove-image="onImageRemove"
+                    @media-modal-selection-change="onSelectionChanges"
+                    @modal-close="onCloseModal">
+            </sw-media-modal-v2>
+        {% endblock %}
+
+    </div>
+{% endblock %}

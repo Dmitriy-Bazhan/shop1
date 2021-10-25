@@ -1,0 +1,29 @@
+.bpa-qcf-form-preview {
+    padding: 15px;
+    overflow: auto;
+
+    .headline {
+        margin-bottom: 15px;
+        border-bottom: 1px solid #d1d9e0;
+        padding-bottom: 10px;
+        font-size: 16px;
+    }
+
+    .input {
+        margin-bottom: 10px;
+        height: 1.7em;
+        border-radius: 4px;
+        border: 1px solid #d1d9e0;
+    }
+
+    .button {
+        float: right;
+        padding: 0 10px;
+        background: #d1d9e0;
+        color: #52667a;
+        text-align: center;
+        font-size: 12px;
+        line-height: 26px;
+        border-radius: 3px;
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "bpa-quick-connector-finder": {
+        "filters": {
+            "excavatorType": "Baggertyp",
+            "excavatorManufacturer": "Baggerhersteller"
+        },
+        "finderPageTitle": "Schnellwechsler-Finder",
+        "finderForm": {
+            "title": "Schnellwechsler-Finder Formular",
+            "submit": "Schnellwechsler finden",
+            "message": "<a data-toggle=\"modal\" data-url=\"%url%\" href=\"%url%\">Sie können den gewünschten Bagger nicht finden?</a>"
+        },
+        "accessoriesProduct": {
+            "setProductTabName": "Produktsicherheitsset",
+            "basicTypeLabelTab": "Produkt Grundset",
+            "safetyTypeLabelTab": "Produktsicherheitsset"
+        }
+    }
+}

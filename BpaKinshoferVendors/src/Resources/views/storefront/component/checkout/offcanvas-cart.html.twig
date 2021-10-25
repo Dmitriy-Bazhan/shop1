@@ -1,0 +1,94 @@
+{% sw_extends '@Storefront/storefront/component/checkout/offcanvas-cart.html.twig' %}
+
+{# setting variables #}
+{% set customerGroupId = context.currentCustomerGroup.id %}
+{% set currentSalesChannel = context.salesChannelId %}
+
+{% set checkoutCustomerGroupDisabled = config('BpaKinshoferVendors.config.customerGroupDisabled') %}
+{% set checkoutCustomerGroupDisabledKinshofer = config('BpaKinshoferVendors.config.customerGroupDisabledKinshofer') %}
+{% set checkoutProductStreamOnRequest = config('BpaKinshoferVendors.config.productStreamsOnlyAbout') %}
+{% set onlyRequestStatus = page.cart.extensions['onlyRequest'] %}
+
+{% set standartCustomer = config('BpaKinshoferVendors.config.customerGroupStandart') %}
+{% set dealers = config('BpaKinshoferVendors.config.customerGroupDealers') %}
+
+{% block component_offcanvas_cart_flashbags %}
+    {% if  page.extensions.salesChannel %}
+        {% set TOGOchannel = page.extensions.salesChannel['To Go'] %}
+        {% set SparePartsChannel = page.extensions.salesChannel['Zapchasti'] %}
+        {% set SparePartsChannel1 = page.extensions.salesChannel['Spare parts'] %}
+    {% endif %}
+
+    {% if onlyRequestStatus and onlyRequestStatus['status'] == true %}
+        <div class="flashbags">
+            {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                type: "warning",
+                content: 'BpaKinshoferVendors.message.onlyRequestProduct'|trans|sw_sanitize
+            } %}
+        </div>
+    {% endif %}
+
+    {% if currentSalesChannel == TOGOchannel or currentSalesChannel == 'a6a2b3ba9e9e4c79b40a0fe6c411b040' %}
+        {{ dump('goto') }}
+
+        {% if customerGroupId in dealers %}
+            <div class="flashbags">
+                {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                    type: "warning",
+                    content: 'BpaKinshoferVendors.message.orderForKinshofer'|trans|sw_sanitize
+                } %}
+            </div>
+        {% elseif customerGroupId in standartCustomer %}
+            <div class="flashbags">
+                {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                    type: "warning",
+                    content: 'BpaKinshoferVendors.message.orderOnlyDealerMessage'|trans|sw_sanitize
+                } %}
+            </div>
+        {% endif %}
+    {% endif %}
+
+    {% if currentSalesChannel == SparePartsChannel %}
+        {{ dump('zapchasti') }}
+
+        {% if customerGroupId in standartCustomer %}
+            <div class="flashbags">
+                {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                    type: "warning",
+                    content: 'BpaKinshoferVendors.message.orderOnlyDealerMessage'|trans|sw_sanitize
+                } %}
+            </div>
+        {% endif %}
+
+        {% if customerGroupId in dealers %}
+            <div class="flashbags">
+                {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                    type: "warning",
+                    content: 'BpaKinshoferVendors.message.orderForKinshofer'|trans|sw_sanitize
+                } %}
+            </div>
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+{% block component_offcanvas_cart_actions_checkout %}
+    {% if not onlyRequestStatus %}
+        {% if currentSalesChannel == SparePartsChannel %}
+            {{ parent() }}
+        {% endif %}
+
+        {% if currentSalesChannel == TOGOchannel or currentSalesChannel == 'a6a2b3ba9e9e4c79b40a0fe6c411b040' %}
+            {% if customerGroupId in dealers %}
+                {{ parent() }}
+            {% endif %}
+        {% endif %}
+    {% endif %}
+
+    <div class="checkout-aside-action">
+        <a href="{{ path('frontend.checkout.confirm.page') }}"
+           class="btn btn-primary btn-block btn-lg begin-checkout-btn"
+           title="{{ "BpaKinshoferVendors.button.requestDealer"|trans|sw_sanitize }}">
+            {{ "BpaKinshoferVendors.button.requestDealer"|trans|sw_sanitize }}
+        </a>
+    </div>
+{% endblock %}

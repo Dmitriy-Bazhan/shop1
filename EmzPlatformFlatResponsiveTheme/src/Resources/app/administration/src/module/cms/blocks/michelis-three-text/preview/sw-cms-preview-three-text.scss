@@ -1,0 +1,12 @@
+.sw-cms-preview-three-text {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 20px;
+  padding: 15px;
+  grid-gap: 10px;
+
+  .text-first-block {
+    grid-column: 1/3;
+    text-align: left;
+  }
+}

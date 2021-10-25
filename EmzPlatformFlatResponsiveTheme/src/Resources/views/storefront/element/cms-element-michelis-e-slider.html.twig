@@ -1,0 +1,63 @@
+{% block cms_element_michelis_e_slider %}
+    {% set sliderConfig = element.fieldConfig.elements %}
+    {% set sliderItems = element.translated.config.sliderItems.value %}
+
+    {% if sliderItems %}
+        <div class="top-carousel">
+            <div id="carouselMichelisIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
+                <div class="container">
+                    <ol class="carousel-indicators">
+                        {% set cnt = 0 %}
+                        {% for slide in sliderItems %}
+                            <li data-target="#carouselMichelisIndicators" data-slide-to="{{ cnt }}"{% if cnt == 0 %} class="active">{% endif %}</li>
+                            {% set cnt = cnt + 1 %}
+                        {% endfor %}
+                    </ol>
+                </div>
+
+                <div class="carousel-inner">
+                    {% set cnt = 0 %}
+                    {% for slide in sliderItems %}
+                        {% set imageCollection = searchMedia([slide['mediaId']], context.context) %}
+                        {% set imageUrl = imageCollection.get(slide['mediaId']).url %}
+                        <div class="carousel-item{% if cnt == 0 %} active{% endif %}"
+                             style="background-image: url('{{ imageUrl }}');">
+                            <div class="container">
+
+                                <div class="slide__wrap ">
+                                    <div class="slide__content {% if sliderItems[cnt]["text_img_position"] == true %}is--right{% else %}is--left{% endif %}">
+                                        <div class="m-top-slider">
+                                            <p class="m-slider-text-label">{{ slide.label|nl2br|sw_sanitize }}</p>
+                                            <p class="m-slider-text-title">{{ slide.title|nl2br|sw_sanitize }}</p>
+                                            <p class="m-slider-text-p"><span>{{ slide.titleBackground|nl2br|sw_sanitize }}</span></p>
+
+                                        </div>
+
+                                    <div class="m-slider-btn-blocks">
+                                        <div class="slider-btns-block">
+                                            {% if(slide.btnName|sw_sanitize) %}
+                                                <a href="{{ slide.url }}" class="link-default">{{ slide.btnName|sw_sanitize }} {% if translatedConfig.newTab.value %}target="_blank"{% endif %}</a>
+                                            {% endif %}
+                                        </div>
+
+                                        <div class="slider-btns-block-second">
+                                            {% if(slide.btnNameAll|sw_sanitize) %}
+                                                <a href="{{ slide.urlSecond }}" class="link-default">{{ slide.btnNameAll|sw_sanitize }} {% if translatedConfig.newTabSecond.value %}target="_blank"{% endif %}</a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        {% set cnt = cnt + 1 %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+
+{% endblock %}
