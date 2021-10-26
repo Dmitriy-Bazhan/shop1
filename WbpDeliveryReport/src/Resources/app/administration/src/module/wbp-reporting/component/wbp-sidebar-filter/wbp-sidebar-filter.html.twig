@@ -1,0 +1,62 @@
+{% block wbp_sidebar_filter %}
+    <sw-sidebar-item
+        class="wbp-sidebar-filter-panel"
+        icon="default-action-filter"
+        :title="$tc('sw-filter-panel.titleSidebarItemFilter')">
+
+        {% block sw_sidebar_filter_content %}
+            <a class="wbp-report-reset-filter"
+                v-if="firstDate || lastDate || searchWarehouse"
+                @click="resetFilter"
+            >{{ $tc('sw-base-filter.resetButton') }}</a>
+
+            <sw-datepicker
+                class="data-order-export-field"
+                size="medium"
+                dateType="date"
+                v-model="firstDate"
+                :label="$tc('wbp-report.title.fromDate')"
+                :config="configFirstDate"
+                @input="onSearch"
+                required>
+            </sw-datepicker>
+
+            <sw-datepicker
+                class="data-order-export-field"
+                size="medium"
+                dateType="date"
+                v-model="lastDate"
+                :label="$tc('wbp-report.title.toDate')"
+                :config="configLastDate"
+                @input="onSearch"
+                required>
+            </sw-datepicker>
+
+            <sw-field
+                :label="$tc('wbp-report.title.warehouse')"
+                v-model="searchWarehouse"
+                :placeholder="$tc('wbp-report.title.warehouseSearch')"
+                @input="onSearch"
+                class="wbp-sidebar-warehouse-filed">
+            </sw-field>
+
+            <sw-button
+                class="wbp-sidebar-button-export"
+                @click="exportOrder"
+                :disabled="disabled"
+                variant="primary">
+                {{ $tc('wbp-report.title.export') }}
+            </sw-button>
+
+            <a class="wbp-report-download sw-button sw-button--primary"
+               href="/api/_action/wbp-report/download"
+               target="_blank"
+               rel="noopener"
+               download
+               v-show="downloadStatus">
+                {{ $tc('wbp-report.title.download') }}
+            </a>
+
+        {% endblock %}
+    </sw-sidebar-item>
+{% endblock %}

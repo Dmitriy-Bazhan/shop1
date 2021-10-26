@@ -1,0 +1,37 @@
+{
+  "wbp-report": {
+      "general": {
+          "mainMenuItemGeneral": "Reporting",
+          "HeaderTitle": "Reports",
+          "descriptionTextModule": "Manage delivery reports here.",
+          "placeholderSearchBar": "Search all reports..."
+      },
+      "list": {
+          "titleSidebarItemRefresh": "Refresh",
+          "messageEmpty": "No reports yet"
+      },
+      "filters": {
+          "messageEmptyTitle": "Nothing found",
+          "messageEmptySubline": "Edit your filters to find results."
+      },
+      "title": {
+          "download": "Download",
+          "fromDate": "From",
+          "toDate": "To",
+          "export": "Export orders",
+          "warehouse": "Warehouse",
+          "warehouseSearch": "Search from 3 characters",
+          "driver1": "Driver first",
+          "driver2": "Driver second",
+          "driver1_start": "Driver first start",
+          "driver1_end": "Driver first end",
+          "driver2_start": "Driver second start",
+          "driver2_end": "Driver second end",
+          "driver1_time": "Driver first time",
+          "driver2_time": "Driver second time"
+      },
+      "message": {
+          "errorExport": "Failed export"
+      }
+  }
+}

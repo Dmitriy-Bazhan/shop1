@@ -1,0 +1,232 @@
+{% block wbp_report_list %}
+<sw-page class="ws-order-list">
+    {% block wbp_report_list_search_bar %}
+        <template #search-bar>
+            <sw-search-bar
+                    initial-search-type="order"
+                    :initial-search="term"
+                    @search="onSearch">
+            </sw-search-bar>
+        </template>
+    {% endblock %}
+
+    {% block wbp_report_list_smart_bar_header %}
+        <template #smart-bar-header>
+            {% block wbp_report_list_smart_bar_header_title %}
+                <h2>
+                    {% block wbp_report_list_smart_bar_header_title_text %}
+                        {{ $tc('wbp-report.general.HeaderTitle') }}
+                    {% endblock %}
+
+                    {% block wbp_report_list_smart_bar_header_amount %}
+                        <span
+                                v-if="!isLoading"
+                                class="sw-page__smart-bar-amount"
+                        >
+                ({{ total }})
+            </span>
+                    {% endblock %}
+                </h2>
+            {% endblock %}
+        </template>
+    {% endblock %}
+
+    {% block wbp_report_list_language_switch %}
+        <sw-language-switch
+                slot="language-switch"
+                @on-change="onChangeLanguage">
+        </sw-language-switch>
+    {% endblock %}
+
+    {% block wbp_report_list_content %}
+    <template #content>
+
+        {% block wbp_report_list_content_slot %}
+        <div class="sw-order-list__content">
+
+            {% block wbp_report_list_grid %}
+            <sw-data-grid
+                    :data-source="orders"
+                    :columns="reportColumns"
+                    :full-page="true"
+                    :show-settings="true"
+                    :show-selection="true"
+                    :sort-by="sortBy"
+                    :sort-direction="sortDirection"
+                    :is-loading="isLoading"
+                    :allow-column-edit="true"
+                    :disable-data-fetching="true"
+                    @column-sort="onSortColumn"
+                    @page-change="onPageChange"
+                    @selection-change="updateSelection"
+            >
+
+                {% block wbp_report_list_grid_columns %}
+                    {% block wbp_report_list_grid_columns_order_number %}
+                        <template #column-orderNumber="{ item }">
+                            {% block wbp_report_list_grid_order_number_link %}
+                                <router-link :to="{ name: 'sw.order.detail', params: { id: item.id } }">
+                                    {{ item.orderNumber }}
+                                </router-link>
+                            {% endblock %}
+                        </template>
+                    {% endblock %}
+
+                    {% block wbp_report_list_grid_columns_customer_name %}
+                        <template #column-orderCustomer.firstName="{ item }">
+                            <router-link :to="{ name: 'sw.customer.detail', params: { id: item.orderCustomer.customerId } }">
+                                {{ item.orderCustomer.lastName }}, {{ item.orderCustomer.firstName }}
+                            </router-link>
+                        </template>
+                    {% endblock %}
+
+                    {% block wbp_report_list_grid_columns_order_date %}
+                        <template #column-orderDateTime="{ item }">
+                            {{ item.orderDateTime | date({hour: '2-digit', minute: '2-digit'}) }}
+                        </template>
+                        <template #column-customFields.custom_driver1_start="{ item }">
+                            <div v-if="item.customFields">
+                                {{ item.customFields.custom_driver1_start | date({hour: '2-digit', minute: '2-digit'}) }}
+                            </div>
+                        </template>
+                        <template #column-customFields.custom_driver1_end="{ item }">
+                            <div v-if="item.customFields">
+                                {{ item.customFields.custom_driver1_end | date({hour: '2-digit', minute: '2-digit'}) }}
+                            </div>
+                        </template>
+                        <template #column-customFields.custom_driver2_start="{ item }">
+                            <div v-if="item.customFields">
+                                {{ item.customFields.custom_driver2_start | date({hour: '2-digit', minute: '2-digit'}) }}
+                            </div>
+                        </template>
+                        <template #column-customFields.custom_driver2_end="{ item }">
+                            <div v-if="item.customFields">
+                                {{ item.customFields.custom_driver2_end | date({hour: '2-digit', minute: '2-digit'}) }}
+                            </div>
+                        </template>
+                    {% endblock %}
+                {% endblock %}
+
+                {% block wbp_report_list_grid_columns_actions %}
+                    <template #actions="{ item }">
+                        {% block wbp_report_list_grid_columns_actions_view %}
+                            <sw-context-menu-item
+                                    class="sw-order-list__manual-order-label"
+                                    :router-link="{ name: 'sw.order.detail', params: { id: item.id } }"
+                            >
+                                {{ $tc('sw-order.list.contextMenuView') }}
+                            </sw-context-menu-item>
+                        {% endblock %}
+
+                        {% block wbp_report_list_grid_columns_actions_delete %}
+                            <sw-context-menu-item
+                                    variant="danger"
+                                    :disabled="disableDeletion(item)"
+                                    @click="onDelete(item.id)"
+                            >
+                                {{ $tc('sw-order.list.contextMenuDelete') }}
+                            </sw-context-menu-item>
+                        {% endblock %}
+                    </template>
+                {% endblock %}
+
+                {% block wbp_report_list_grid_action_modals %}
+                <template #action-modals="{ item }">
+                    {% block sw_order_list_delete_modal %}
+                    <sw-modal
+                        v-if="showDeleteModal === item.id"
+                        :title="$tc('global.default.warning')"
+                        variant="small"
+                        @modal-close="onCloseDeleteModal"
+                    >
+                        {% block wbp_report_list_delete_modal_confirm_delete_text %}
+                        <p class="sw-order-list__confirm-delete-text">
+                        {{ $tc('sw-order.list.textDeleteConfirm', 0, { orderNumber: `${item.orderNumber}` }) }}
+                    </p>
+                    {% endblock %}
+
+                    {% block wbp_report_list_delete_modal_footer %}
+                        <template #modal-footer>
+                            {% block wbp_report_list_delete_modal_cancel %}
+                            <sw-button
+                                size="small"
+                                @click="onCloseDeleteModal"
+                            >
+                                {{ $tc('sw-order.list.buttonCancel') }}
+                                </sw-button>
+                                {% endblock %}
+
+                                {% block wbp_report_list_delete_modal_confirm %}
+                                <sw-button
+                                variant="danger"
+                                size="small"
+                                @click="onConfirmDelete(item.id)">
+                                {{ $tc('sw-order.list.buttonDelete') }}
+                            </sw-button>
+                            {% endblock %}
+                        </template>
+                        {% endblock %}
+                    </sw-modal>
+                    {% endblock %}
+                </template>
+                {% endblock %}
+
+                <template #pagination>
+                    {% block wbp_report_list_grid_pagination %}
+                        <sw-pagination
+                                :page="page"
+                                :limit="limit"
+                                :total="total"
+                                :total-visible="7"
+                                @page-change="onPageChange">
+                        </sw-pagination>
+                    {% endblock %}
+                </template>
+            </sw-data-grid>
+            {% endblock %}
+
+            {% block wbp_report_list_empty_state %}
+                <template v-if="!isLoading && !total">
+                    <sw-empty-state
+                            v-if="filterCriteria.length"
+                            :title="$tc('wbp-report.filters.messageEmptyTitle')"
+                            :subline="$tc('wbp-report.filters.messageEmptySubline')">
+                    </sw-empty-state>
+                    <sw-empty-state
+                            v-else
+                            :title="$tc('wbp-report.list.messageEmpty')">
+                    </sw-empty-state>
+                </template>
+            {% endblock %}
+        </div>
+        {% endblock %}
+    </template>
+
+    {% block wbp_report_list_sidebar %}
+        <template #sidebar>
+            <sw-sidebar class="sw-order-list__sidebar">
+                {% block wbp_report_list_sidebar_refresh %}
+                    <sw-sidebar-item
+                            icon="default-arrow-360-left"
+                            :title="$tc('wbp-report.general.HeaderTitle')"
+                            @click="onRefresh">
+                    </sw-sidebar-item>
+                {% endblock %}
+
+                {% block wbp_report_list_sidebar_filter %}
+                    <wbp-sidebar-filter
+                        entity="customer"
+                        :store-key="storeKey"
+                        :downloadStatus="downloadStatus"
+                        :disabled="disabled"
+                        @wbp-report-reset-filter="resetFilter"
+                        @wbp-report-search="searchWarehouse"
+                        @wbp-report-export-order="exportOrder">
+                    </wbp-sidebar-filter>
+                {% endblock %}
+            </sw-sidebar>
+        </template>
+    {% endblock %}
+    {% endblock %}
+</sw-page>
+{% endblock %}

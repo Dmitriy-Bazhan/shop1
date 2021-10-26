@@ -1,0 +1,26 @@
+.wbp-report-list {
+    .wbp-report-list__content {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+
+    .is--inactive {
+        color: #DE294CFF;
+    }
+
+    .is--active {
+        color: #37D046FF;
+    }
+
+    .wbp-report-list__sidebar .wbp-sidebar-item__scrollable-container {
+        padding: 0 25px;
+    }
+
+
+    .sw-filter-panel {
+        padding: 0;
+    }
+}
+
+

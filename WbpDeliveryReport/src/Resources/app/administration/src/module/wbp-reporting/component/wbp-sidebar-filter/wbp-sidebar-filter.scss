@@ -1,0 +1,59 @@
+.wbp-sidebar-warehouse-filed {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: 12px 26px;
+    border: none;
+    background: #fff;
+    font-size: 14px;
+    font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    line-height: 22px;
+}
+
+.wbp-sidebar-button-export {
+    margin-left: 26px;
+}
+
+.data-order-export-field {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: 12px 26px;
+    border: none;
+    background: #fff;
+    font-size: 14px;
+    font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    line-height: 22px;
+}
+
+.wbp-report-reset-filter {
+    cursor: default;
+    margin-left: 315px;
+    &:hover {
+        color: #0e82ff;
+    }
+}
+
+.wbp-report-download {
+    border: 1px solid #c2ccd6;
+    background: #f9fafb;
+    color: #52667a;
+    transition: all .15s ease-out;
+    display: inline-block;
+    border-radius: 4px;
+    padding: 2px 24px;
+    font-size: 14px;
+    line-height: 34px;
+    outline: none;
+    font-weight: 600;
+    font-family: Source Sans Pro,Helvetica Neue,Helvetica,Arial,sans-serif;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    margin: 0;
+    position: relative;
+}
+

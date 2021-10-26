@@ -1,0 +1,37 @@
+{
+    "wbp-report": {
+        "general": {
+            "mainMenuItemGeneral": "Berichterstellung",
+            "HeaderTitle": "Berichte",
+            "descriptionTextModule": "Hier Zustellberichte verwalten.",
+            "placeholderSearchBar": "Alle Berichte durchsuchen..."
+        },
+        "list": {
+            "titleSidebarItemRefresh": "Aktualisieren",
+            "messageEmpty": "Noch keine Berichte"
+        },
+        "filters": {
+            "messageEmptyTitle": "Nichts gefunden",
+            "messageEmptySubline": "Bearbeiten Sie Ihre Filter, um Ergebnisse zu finden."
+        },
+        "title": {
+            "download": "Herunterladen",
+            "fromDate": "Von",
+            "toDate": "Bis",
+            "export": "Exportaufträge",
+            "warehouse": "Lager",
+            "warehouseSearch": "Suche ab 3 Zeichen",
+            "driver1": "Treiber zuerst",
+            "driver2": "Fahrer zweiter",
+            "driver1_start": "Erster Start des Treibers",
+            "driver1_end": "Treiber erstes Ende",
+            "driver2_start": "Fahrer zweiter Start",
+            "driver2_end": "Treiber zweites Ende",
+            "driver1_time": "Fahrer zum ersten Mal",
+            "driver2_time": "Fahrer zum zweiten Mal"
+        },
+        "message": {
+            "errorExport": "Fehler beim Exportieren"
+        }
+    }
+}

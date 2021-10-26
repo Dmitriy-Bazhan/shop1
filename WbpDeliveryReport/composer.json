@@ -1,0 +1,31 @@
+{
+  "name": "webiprog/plugin-deliveryreport",
+  "description": "Delivery reports plugin",
+  "type": "shopware-platform-plugin",
+  "version": "1.0.0",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "WebiProg"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "WbpDeliveryReport\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "WbpDeliveryReport\\WbpDeliveryReport",
+    "label": {
+      "de-DE": "WbpDeliveryReport",
+      "en-GB": "WbpDeliveryReport"
+    },
+    "description": {
+      "de-DE": "Plugin für Zustellberichte",
+      "en-GB": "Delivery reports plugin"
+    }
+  },
+  "require": {
+    "phpoffice/phpspreadsheet": "^1.18"
+  }
+}
