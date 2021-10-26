@@ -1,6 +1,7 @@
-const { Component, Mixin } = Shopware;
+const {Component, Mixin} = Shopware;
 import template from './template.html.twig';
-const { Criteria } = Shopware.Data;
+
+const {Criteria} = Shopware.Data;
 
 Component.register('bpa-qcf-view-list', {
     template,

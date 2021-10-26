@@ -1,15 +1,20 @@
-import NewPluginService from './service/newPluginPlugin.service';
+import NewPluginPluginService from './service/newPluginPlugin.service';
 import './view/example';
 
-Shopware.Service().register('NewPluginService', () => {
-    return new NewPluginService(
-        Shopware.Application.getContainer('init').httpClient,
-        Shopware.Service('loginService')
-    );
+// Shopware.Service().register('NewPluginService', () => {
+//     return new NewPluginService(
+//         Shopware.Application.getContainer('init').httpClient,
+//         Shopware.Service('loginService')
+//     );
+// });
+
+Shopware.Service().register('joker', (container) => {
+    const initContainer = Shopware.Application.getContainer('init');
+    return new NewPluginPluginService(initContainer.httpClient);
 });
 
 
-Shopware.Module.register('new-plugin-example', {
+Shopware.Module.register('new-plugin', {
     type: 'plugin',
     name: 'NewPluginMenuModule',
     title: 'New Plugin',
@@ -17,7 +22,7 @@ Shopware.Module.register('new-plugin-example', {
     entity: 'a_new_plugin_item',
     color: 'rgb(221,0,37)',
     icon: 'default-basic-stack-circle',
-    favicon: 'default-basic-stack-circle',
+    favicon: 'icon-module-products.png',
 
     snippets : {
 
@@ -45,7 +50,7 @@ Shopware.Module.register('new-plugin-example', {
             label: 'First',
             color: 'rgb(221,0,37)',
             icon: 'default-basic-stack-circle',
-            path: 'new.plugin.example.index',
+            path: 'new.plugin.index',
             parent: 'new-plugin-example'
         }
     ]
