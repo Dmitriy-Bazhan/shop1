@@ -1,6 +1,6 @@
 import './module/new-plugin-example';
-// import './app/component/structure/sw-search-bar';
 
+// import './app/component/structure/sw-search-bar';
 
 
 const { Application } = Shopware;

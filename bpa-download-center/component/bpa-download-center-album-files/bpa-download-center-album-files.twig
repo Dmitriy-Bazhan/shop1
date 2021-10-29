@@ -1,0 +1,113 @@
+{% block bpa_download_center_album_edit_form %}
+    <sw-entity-listing
+        v-if="files && files.length"
+        :items="files"
+        :repository="albumRepository"
+        :showSelection="false"
+        :columns="columns"
+        detailRoute="bpa.download.center.detail.files"
+        class="bpa-download-center-album-edit-form">
+
+        <template #actions="{ item }">
+            {% block sw_integration_list_grid_inner_slot_columns_actions_edit %}
+                <sw-context-menu-item
+                    class="bpa-download-center-file__edit-action"
+                    @click="onEditFile(item)"
+                >
+                    {{ $tc('bpa-download-center.general.edit') }}
+                </sw-context-menu-item>
+            {% endblock %}
+
+            {% block sw_integration_list_grid_inner_slot_columns_actions_delete %}
+                <sw-context-menu-item
+                    class="bpa-download-center-file__delete-action"
+                    variant="danger"
+                    @click="showDeleteModal = item.id"
+                >
+                    {{ $tc('bpa-download-center.general.delete') }}
+                </sw-context-menu-item>
+            {% endblock %}
+        </template>
+
+        <template #column-name="{ item } ">
+            <div>
+                <p>{{ item.name }}</p>
+                <a :href="basePath + '/bpa-file-download/' + item.id"
+                   v-if="showLink == 1"
+                   rel="noopener"
+                   download
+                >{{ item.path }}</a>
+            </div>
+        </template>
+
+        <template #column-typeimg="{ item } ">
+            <div class="bpa-file-image">
+                <img :src="getFilePreview(item.type)" class="blank" />
+            </div>
+        </template>
+
+        <template #column-fileSize="{ item } ">
+            <div>
+                <p>{{ ((item.fileSize / 1024 / 1024).toFixed(2)) }} MB</p>
+            </div>
+        </template>
+
+        <template #column-type="{ item } ">
+            <div>
+                <p>{{ ((item.type).toLowerCase()) }}</p>
+            </div>
+        </template>
+
+{#        <template #column-download="{ item } ">#}
+{#            <div class="bpa-file-name">#}
+{#                <a :href="basePath + '/bpa-file-download/' + item.id"#}
+{#                rel="noopener"#}
+{#                download#}
+{#                >{{ item.path }}</a>#}
+{#            </div>#}
+{#        </template>#}
+
+        <template #action-modals="{ item }">
+            {% block sw_integration_list_grid_inner_slot_delete_modal %}
+                <sw-modal
+                    variant="small"
+                    v-if="showDeleteModal === item.id"
+                    :title="$tc('bpa-download-center.general.warning')"
+                    @modal-close="onCloseDeleteModal"
+                >
+                    {% block sw_integration_list_grid_inner_slot_delete_modal_confirmtext %}
+                        <p>
+                            {{ $tc('bpa-download-center.files.deleteFileNotification') }}
+                        </p>
+                    {% endblock %}
+
+                    {% block sw_integration_list_grid_inner_slot_delete_modal_footer %}
+                        <template slot="modal-footer">
+                            <sw-button
+                                size="small"
+                                @click="onCloseDeleteModal"
+                            >
+                                {{ $tc('sw-integration.detail.buttonCancel') }}
+                            </sw-button>
+
+                            <sw-button
+                                size="small"
+                                variant="danger"
+                                @click="onConfirmDelete(item)"
+                            >
+                                {{ $tc('sw-integration.detail.buttonDelete') }}
+                            </sw-button>
+                        </template>
+                    {% endblock %}
+                </sw-modal>
+            {% endblock %}
+        </template>
+    </sw-entity-listing>
+
+    <sw-empty-state v-else
+        :title="$tc('bpa-download-center.files.emptySearchFileResults')">
+    </sw-empty-state>
+
+{% endblock %}
+
+

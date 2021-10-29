@@ -1,0 +1,54 @@
+{
+    "bpa-download-center": {
+        "general": {
+            "title": "Download center",
+            "description": "",
+            "headlineInformationCard": "Allgemein",
+            "albumNameLabel": "Name",
+            "isAlbumActiveLabel": "Album aktiv",
+            "descriptionLabel": "Beschreibung",
+            "customerGroupRestrict": "Beschränken Sie den Zugriff auf Benutzergruppen",
+            "customerRestrict": "Benutzerzugriff einschränken",
+            "descriptionPlaceholder": "Beschreibung eingeben…",
+            "conditionalLabel": "Zugangsbedingungen",
+            "isAlbumNotListedLabel": "Nicht sichtbar",
+            "buttonSaveAlbum": "Speichern",
+            "edit": "Bearbeiten",
+            "delete": "Löschen",
+            "warning": "Warnung",
+            "synchronize": "Synchronised"
+        },
+        "settings": {
+            "headlineInformationCard": "Einstellungen",
+            "albumSettingsAdapterLabel": "Adapter / Protokoll",
+            "albumSettingsHostLabel": "Host",
+            "albumSettingsPortLabel": "Port",
+            "albumSettingsUsernameLabel": "Benutzername",
+            "albumSettingsPasswordLabel": "Passwort",
+            "albumSettingsRootDirLabel": "Wurzelverzeichnis",
+            "albumSettingsPassiveMode": "Passiver Modus",
+            "albumSettingsUseSll": "Verwenden ssl"
+        },
+        "files": {
+            "emptySearchAlbumResults": "Kein Album ausgewählt",
+            "emptySearchFileResults": "Es sind keine Dateien vorhanden",
+            "deleteFileNotification": "Möchten Sie die Datei wirklich löschen?"
+        },
+        "detail": {
+            "textHeadline": "Alben",
+            "buttonCancel": "Abbruch",
+            "messageSaveAlbumSuccess": "Das Album \"{name}\" wurde erfolgreich gespeichert.",
+            "messageSaveFileSuccess": "Das File \"{name}\" wurde erfolgreich gespeichert.",
+            "messageSynchronizedAlbumSuccess": "Das, Album \"{name}\" wurde synchronisiert.",
+            "messageSynchronizedAlbumError": "Album \"{name}\" konnte nicht synchronisiert werden."
+        },
+        "albumFiles": {
+            "albumName": "Dateiname",
+            "albumDescription": "Beschreibung",
+            "albumTitle": "Titel",
+            "albumFileSize": "Dateigröße",
+            "albumFileType": "Dateityp",
+            "download": "Herunterladen"
+        }
+    }
+}

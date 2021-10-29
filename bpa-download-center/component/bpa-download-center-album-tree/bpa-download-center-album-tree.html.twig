@@ -1,0 +1,34 @@
+<div class="bpa-download-center-album-tree">
+    <sw-tree class="bpa-download-center-album-tree__inner"
+             v-if="!isLoadingInitialData"
+             :searchable="false"
+             :disableContextMenu="false"
+             :on-change-route="changeAlbumRoute"
+             :items="albums"
+             :sortable="false"
+             @delete-element="onDeleteAlbum"
+             :activeTreeItemId="albumId">
+        <template #headline>
+            <div class="sw-tree-actions__headline">
+                <span>{{ $tc('bpa-download-center.detail.textHeadline') }}</span>
+            </div>
+        </template>
+
+        <template #items="{ treeItems, sortable, draggedItem, disableContextMenu, onChangeRoute, newElementId, checkItem }">
+            <bpa-download-center-album-tree-item
+                v-for="(item, index) in treeItems"
+                :key="item.id"
+                :item="item"
+                :active="item.active"
+                :disableContextMenu="false"
+                :new-element-id="newElementId"
+                :onChangeRoute="onChangeRoute"
+                :sortable="false"
+                :display-checkbox="false"
+                :getItemUrl="getAlbumUrl">
+            </bpa-download-center-album-tree-item>
+        </template>
+    </sw-tree>
+
+    <sw-loader v-else></sw-loader>
+</div>

@@ -1,0 +1,29 @@
+{% block bpa_download_center_file_edit_form %}
+<sw-card-view class="bpa-download-center-file-edit-form">
+    <sw-language-info
+        :entityDescription="placeholder(file, 'name', $tc('bpa-download-center.detail.textHeadline'))">
+    </sw-language-info>
+
+    <sw-card :title="$tc('bpa-download-center.general.headlineInformationCard')" :isLoading="isLoading">
+        <sw-container>
+            <sw-text-field
+                required
+                class="bpa-download-center-album-file-detail-base__active"
+                v-model="file.name"
+                validation="required"
+                :label="$tc('bpa-download-center.general.albumNameLabel')"
+                :placeholder="placeholder(file, 'name')"
+                :error="fileNameError">
+            </sw-text-field>
+
+            <sw-text-editor
+                class="bpa-download-center-album-file-base__description"
+                type="textarea"
+                :label="$tc('bpa-download-center.general.descriptionLabel')"
+                :placeholder="$tc('bpa-download-center.general.descriptionPlaceholder')"
+                v-model="file.description">
+            </sw-text-editor>
+        </sw-container>
+    </sw-card>
+</sw-card-view>
+{% endblock %}

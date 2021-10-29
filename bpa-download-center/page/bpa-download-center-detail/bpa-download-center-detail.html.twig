@@ -1,0 +1,91 @@
+{% block bpa_download_center_index %}
+    <sw-page class="bpa-download-center-index">
+        <template #smart-bar-header>
+            <h2>{{ $tc('bpa-download-center.general.title') }}</h2>
+        </template>
+
+        <template #language-switch>
+            <sw-language-switch
+                @on-change="onChangeLanguage"
+                :saveChangesFunction="saveOnLanguageChange"
+                :abortChangeFunction="abortOnLanguageChange">
+            </sw-language-switch>
+        </template>
+
+        <template #smart-bar-actions>
+            <template v-if="album && $route.name === 'bpa.download.center.detail.edit'">
+                <sw-button :disabled="isLoading" v-tooltip.bottom="tooltipCancel" @click="cancelEdit">
+                    {{ $tc('bpa-download-center.detail.buttonCancel') }}
+                </sw-button>
+                <sw-button-process v-if="album"
+                                   class="bpa-download-center__save-action"
+                                   :isLoading="isLoading"
+                                   :processSuccess="isSaveSuccessful"
+                                   :disabled="isLoading"
+                                   variant="primary"
+                                   @process-finish="saveFinish"
+                                   v-tooltip.bottom="tooltipSave"
+                                   @click.prevent="onSave">
+                    {{ $tc('bpa-download-center.general.buttonSaveAlbum') }}
+                </sw-button-process>
+            </template>
+
+            <template v-if="file && $route.name === 'bpa.download.center.detail.file'">
+                <sw-button :disabled="isLoading" v-tooltip.bottom="tooltipCancel" @click="cancelEdit">
+                    {{ $tc('bpa-download-center.detail.buttonCancel') }}
+                </sw-button>
+                <sw-button-process v-if="album"
+                                   class="bpa-download-center__save-action"
+                                   :isLoading="isLoading"
+                                   :processSuccess="isSaveSuccessful"
+                                   :disabled="isLoading"
+                                   variant="primary"
+                                   @process-finish="saveFinish"
+                                   v-tooltip.bottom="tooltipSave"
+                                   @click.prevent="onSaveFile">
+                    {{ $tc('bpa-download-center.general.buttonSaveAlbum') }}
+                </sw-button-process>
+            </template>
+
+            <sw-button-process v-if="album"
+                               class="bpa-download-center__save-action"
+                               :isLoading="isLoading"
+                               :processSuccess="isSaveSuccessful"
+                               :disabled="isLoading"
+                               variant="primary"
+                               @process-finish="saveFinish"
+                               v-tooltip.bottom="tooltipSave"
+                               @click.prevent="onSynchronize">
+                {{ $tc('bpa-download-center.general.synchronize') }}
+            </sw-button-process>
+        </template>
+
+        <template #side-content>
+            <bpa-download-center-album-tree
+                :albumId="albumId">
+            </bpa-download-center-album-tree>
+        </template>
+
+        <template #content>
+            <bpa-download-center-album-files
+                v-if="album && $route.name === 'bpa.download.center.detail.files'">
+            </bpa-download-center-album-files>
+
+            <bpa-download-center-album-edit-form
+                v-if="album && $route.name === 'bpa.download.center.detail.edit'">
+            </bpa-download-center-album-edit-form>
+
+            <bpa-download-center-file-edit-form
+                v-if="file && $route.name === 'bpa.download.center.detail.file'">
+            </bpa-download-center-file-edit-form>
+
+            <sw-empty-state
+                v-if="!album"
+                :title="$tc('bpa-download-center.files.emptySearchAlbumResults')"
+                :icon="'default-symbol-content'">
+                <span></span>
+            </sw-empty-state>
+
+        </template>
+    </sw-page>
+{% endblock %}

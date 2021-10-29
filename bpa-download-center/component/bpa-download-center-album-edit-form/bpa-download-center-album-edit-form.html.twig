@@ -1,0 +1,148 @@
+{% block bpa_download_center_album_edit_form %}
+    <sw-card-view class="bpa-download-center-album-edit-form">
+        <sw-language-info
+            :entityDescription="placeholder(album, 'name', $tc('bpa-download-center.detail.textHeadline'))">
+        </sw-language-info>
+
+        <sw-card :title="$tc('bpa-download-center.general.headlineInformationCard')" :isLoading="isLoading">
+            <sw-container columns="repeat(auto-fit, minmax(150px, 1fr))" gap="0px 30px">
+                <sw-text-field
+                    required
+                    class="bpa-download-center-album-detail-base__active"
+                    v-model="album.name"
+                    validation="required"
+                    :label="$tc('bpa-download-center.general.albumNameLabel')"
+                    :error="albumNameError">
+                </sw-text-field>
+
+                <sw-text-field
+                    required
+                    class="bpa-download-center-album-detail-base__active"
+                    validation="required"
+                    :error="albumDescriptionError"
+                    v-model="album.description">
+                </sw-text-field>
+
+                <sw-switch-field
+                    class="bpa-download-center-album-base__active"
+                    :label="$tc('bpa-download-center.general.isAlbumActiveLabel')"
+                    v-model="album.isActive">
+                </sw-switch-field>
+
+                <sw-switch-field
+                    class="bpa-download-center-album-base__isNotListed"
+                    :label="$tc('bpa-download-center.general.isAlbumNotListedLabel')"
+                    v-model="album.isNotListed">
+                </sw-switch-field>
+
+            </sw-container>
+
+            <sw-container>
+{#                <sw-text-editor#}
+{#                    required#}
+{#                    class="bpa-download-center-album--base__description"#}
+{#                    type="textarea"#}
+{#                    validation="required"#}
+{#                    :label="$tc('bpa-download-center.general.descriptionLabel')"#}
+{#                    :error="albumDescriptionError"#}
+{#                    v-model="album.description">#}
+{#                </sw-text-editor>#}
+            </sw-container>
+
+            <sw-container>
+                <sw-entity-multi-select
+                    :label="$tc('bpa-download-center.general.customerGroupRestrict')"
+                    entity="customer_group"
+                    :entity-collection="customerGroups"
+                    @change="setCustomerGroupIds">
+                </sw-entity-multi-select>
+
+                <sw-entity-multi-select
+                    :label="$tc('bpa-download-center.general.customerRestrict')"
+                    entity="customers"
+                    :entity-collection="customers"
+                    @change="setCustomerIds">
+                    <template #result-label-property="{ item, index }">
+                        {{ item.email }}
+                    </template>
+
+                    <template #selection-label-property="{ item, index }">
+                        {{ item.email }}
+                    </template>
+                </sw-entity-multi-select>
+            </sw-container>
+        </sw-card>
+
+        <sw-card :title="$tc('bpa-download-center.settings.headlineInformationCard')" :isLoading="isLoading">
+            <sw-container gap="0px 30px">
+                 <sw-single-select
+                    class="bpa-download-center-album-detail-settings__adapter-select"
+                    :label="$tc('bpa-download-center.settings.albumSettingsAdapterLabel')"
+                    :options="availableAdapters"
+                    validation="required"
+                    :error="albumSettingsAdapterError"
+                    v-model="album.settings.adapter"
+                    required>
+                </sw-single-select>
+            </sw-container>
+            <sw-container columns="75% auto" gap="0px 30px">
+                <sw-text-field
+                    class="bpa-download-center-album-detail-settings__host"
+                    :label="$tc('bpa-download-center.settings.albumSettingsHostLabel')"
+                    v-model="album.settings.host"
+                    validation="required"
+                    :error="albumSettingsHostError"
+                    required>
+                </sw-text-field>
+                <sw-number-field
+                    class="bpa-download-center-album-detail-settings__port"
+                    :label="$tc('bpa-download-center.settings.albumSettingsPortLabel')"
+                    placeholder="80"
+                    v-model="album.settings.port"
+                    required>
+                </sw-number-field>
+            </sw-container>
+
+            <sw-container columns="repeat(auto-fit, minmax(150px, 1fr))" gap="0px 30px">
+                <sw-text-field
+                    class="bpa-download-center-album-detail-settings__username"
+                    :label="$tc('bpa-download-center.settings.albumSettingsUsernameLabel')"
+                    :placeholder="$tc('bpa-download-center.settings.albumSettingsUsernameLabel')"
+                    v-model="album.settings.username"
+                    required>
+                </sw-text-field>
+
+                <sw-password-field
+                    class="bpa-download-center-album-detail-settings__password"
+                    :label="$tc('bpa-download-center.settings.albumSettingsPasswordLabel')"
+                    :placeholder="$tc('bpa-download-center.settings.albumSettingsPasswordLabel')"
+                    v-model="album.settings.password"
+                    required>
+                </sw-password-field>
+            </sw-container>
+
+        <sw-container columns="60% 20% 20%" gap="0px 30px">
+            <sw-text-field
+                class="bpa-download-center-album-detail-settings__root"
+                :label="$tc('bpa-download-center.settings.albumSettingsRootDirLabel')"
+                :placeholder="$tc('bpa-download-center.settings.albumSettingsRootDirLabel')"
+                v-model="album.settings.root"
+                required>
+            </sw-text-field>
+
+            <sw-switch-field
+                class="bpa-download-center-album-base__passivemode"
+                :label="$tc('bpa-download-center.settings.albumSettingsPassiveMode')"
+                v-model="album.settings.passiveMode">
+            </sw-switch-field>
+
+            <sw-switch-field
+                class="bpa-download-center-album-base__usessl"
+                :label="$tc('bpa-download-center.settings.albumSettingsUseSll')"
+                v-model="album.settings.useSsl">
+            </sw-switch-field>
+
+            </sw-container>
+        </sw-card>
+    </sw-card-view>
+{% endblock %}

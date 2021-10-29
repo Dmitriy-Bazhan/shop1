@@ -1,0 +1,55 @@
+{
+    "bpa-download-center": {
+        "general": {
+            "title": "Download center",
+            "description": "",
+            "headlineInformationCard": "General",
+            "albumNameLabel": "Name",
+            "isAlbumActiveLabel": "Album active",
+            "descriptionLabel": "Description",
+            "customerGroupRestrict": "Restrict access to groups of users",
+            "customerRestrict": "Restrict user access",
+            "descriptionPlaceholder": "Enter description…",
+            "conditionalLabel": "Access conditions",
+            "isAlbumNotListedLabel": "Not visible",
+            "buttonSaveAlbum": "Save",
+            "edit": "Edit",
+            "delete": "Delete",
+            "warning": "Warning",
+            "synchronize": "Synchronize"
+        },
+        "settings": {
+            "headlineInformationCard": "Settings",
+            "albumSettingsAdapterLabel": "Adapter / Protocol",
+            "albumSettingsHostLabel": "Host",
+            "albumSettingsPortLabel": "Port",
+            "albumSettingsUsernameLabel": "Username",
+            "albumSettingsPasswordLabel": "Password",
+            "albumSettingsRootDirLabel": "Root directory",
+            "albumSettingsPassiveMode": "Passive Mode",
+            "albumSettingsUseSll": "Use ssl"
+
+        },
+        "files": {
+            "emptySearchAlbumResults": "No album selected",
+            "emptySearchFileResults": "There are no files",
+            "deleteFileNotification": "Are you sure you really want to delete the file"
+        },
+        "detail": {
+            "textHeadline": "Albums",
+            "buttonCancel": "Cancel",
+            "messageSaveAlbumSuccess": "Album \"{name}\" has been saved.",
+            "messageSaveFileSuccess": "File \"{name}\" has been saved.",
+            "messageSynchronizedAlbumSuccess": "Album \"{name}\" has been synchronized.",
+            "messageSynchronizedAlbumError": "Failed to sync album \"{name}\"."
+        },
+        "albumFiles": {
+            "albumName": "File name",
+            "albumDescription": "Description",
+            "albumTitle": "Title",
+            "albumFileSize": "File size",
+            "albumFileType": "File type",
+            "download": "Download"
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{% block sw_tree_item_element_leaf_icon %}
+    {# always show leaf #}
+    <div class="sw-tree-item__leaf"></div>
+{% endblock %}
+
+{% block sw_tree_item_element_toggle %}
+    {# remove #}
+{% endblock %}
+
+{% block sw_tree_items_actions_sub %}
+    {# remove #}
+{% endblock %}
+
+{% block sw_tree_items_actions_edit %}
+    {# Add show button #}
+    <sw-context-menu-item @click="onChangeRoute(item)">
+        {{ $tc('global.default.view') }}
+    </sw-context-menu-item>
+    <sw-context-menu-item @click="onChangeRoute(item, 'edit')">
+        {{ $tc('global.default.edit') }}
+    </sw-context-menu-item>
+{% endblock %}
